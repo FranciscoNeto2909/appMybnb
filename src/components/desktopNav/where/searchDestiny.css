@@ -1,0 +1,73 @@
+.setDestiny-search {
+    border-radius: 30px;
+    background-color: #fff;
+    z-index: 4;
+}
+
+.setDestiny-search {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    height: 470px;
+    min-width: 60%;
+    width: 680px;
+    top: 100%;
+}
+
+.setDestiny-search-left,
+.setDestiny-search-right {
+    height: 100%;
+    padding: 10px;
+    font-size: .8rem;
+    flex-grow: 1;
+    cursor: initial;
+}
+
+.setDestiny-search-right {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    gap: 30px 0;
+}
+
+.setDestiny-search-divisor {
+    height: 90%;
+    border-left: 1px solid #00000030;
+}
+
+.search-right-regions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px 8px;
+}
+
+.search-right-region {
+    height: 148px;
+    width: 120px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.search-right-region-input {
+    display: none;
+}
+
+.search-right-region-img {
+    width: 100%;
+    border: 1px solid #00000030;
+    border-radius: 10px;
+}
+
+.search-right-region-img:hover {
+    border: 1px solid #000;
+}
+
+.search-right-region-txt{
+    display: inline-block;
+    margin-top: 8px;
+}

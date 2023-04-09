@@ -1,0 +1,110 @@
+.mobNav {
+    width: 100vw;
+    position: fixed;
+    bottom: 0;
+    display: block;
+    height: 60px;
+    z-index: 4;
+    background-color: #fff;
+    box-shadow: 0 -2px 4px #00000020;
+}
+
+.mobNav-items-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.mobNav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgb(109, 108, 108);
+    font-weight: 600;
+    font-size: .85rem;
+}
+
+.mobNav-item-selected {
+    color: #bd1e59;
+}
+
+.mobNav-item-selected--text {
+    color: #000;
+}
+
+.mobDestinyButton {
+    width: 100%;
+    top: 0;
+    position: sticky;
+    display: flex;
+    gap: 8px 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    background-color: #fafafa;
+    padding-top: 16px;
+}
+
+.mobDestinyButton-items {
+    height: 54px;
+    width: 85%;
+    background-color: #fff;
+    border-radius: 40px;
+    padding: 10px;
+    box-shadow: 0 0 5px #00000030;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.mobDestinyButton-button {
+    width: 85%;
+    display: flex;
+    align-items: center;
+    text-align: start;
+    padding: 10px 0;
+    border: none;
+    background-color: transparent;
+}
+
+.mobDestinyButton-item-search {
+    height: 100%;
+    width: 54px;
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.mobDestinyButton-item-texts {
+    flex-grow: 1;
+}
+
+.mobDestinyButton-item-text {
+    font-size: .85rem;
+    color: #717171;
+}
+
+.mobDestinyButton-item-text--first {
+    font-weight: bold;
+    display: block;
+    color: #000;
+}
+
+.mobDestinyButton-item-text-divisor {
+    display: inline-block;
+    margin: 0 4px;
+    color: #717171;
+    transform: translateY(-2px);
+}
+
+.mobButton-button {
+    justify-self: flex-end;
+    display: flex;
+    padding: 8px;
+    border-radius: 50%;
+    border: 1px solid #717171;
+    background-color: transparent;
+}

@@ -1,0 +1,125 @@
+.hostTypes-container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 24px;
+    box-shadow: 0 2px 2px #00000010;
+    align-items: center;
+    background-color: transparent;
+    border-top: 1px solid #7171712c;
+    z-index: 2;
+}
+
+
+.hostTypes {
+    width: 100%;
+    padding: 0 8px;
+    display: flex;
+    gap: 8px;
+    overflow-x: scroll;
+}
+
+.hostTypes::-webkit-scrollbar {
+    height: 0;
+}
+
+.hostTypes-buttons {
+    display: flex;
+    align-items: center;
+    gap: 0 8px;
+}
+
+.hostTypes-buttons-filter {
+    display: flex;
+    align-items: center;
+    gap: 0 8px;
+    border-radius: 12px;
+    padding: 12px 8px;
+    border: 1px solid #7171712c;
+    background-color: transparent;
+}
+
+.hostTypes-buttons-filter:hover {
+    cursor: pointer;
+}
+
+.hostTypes-buttons-button {
+    height: 26px;
+}
+
+.hostTypes-buttons-button,
+.hostTypes-button {
+    display: flex;
+    border-radius: 50%;
+    border: 1px solid #717171;
+    background-color: transparent;
+    padding: 4px;
+}
+
+.hostTypes-button:hover {
+    cursor: pointer;
+}
+
+.hostTypes-button--left {
+    display: none;
+}
+
+.hostTypes-hostType {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px;
+    color: #717171;
+    border-bottom: 2px solid transparent;
+    opacity: 0.8;
+}
+
+.hostTypes-hostType:hover {
+    cursor: pointer;
+}
+
+.hostTypes-hostType:not(.hostTypes-hostType--selected):hover {
+    cursor: pointer;
+    opacity: 0.95;
+    color: #000;
+    border-bottom: 2px solid #a7a7a7;
+}
+
+.hostTypes-hostType--selected {
+    color: #000;
+    opacity: 1;
+    border-bottom: 2px solid #1a1a1a;
+}
+
+.hostTypes-hostType-img {
+    height: 25px;
+    width: 25px;
+    opacity: inherit;
+}
+
+.hostTypes-hostType-title {
+    font-size: .7rem;
+    white-space: nowrap;
+}
+
+@media (max-width:750px) {
+    .hostTypes-buttons {
+        display: none;
+    }
+}
+
+@media (max-width:500px) {
+    .hostTypes-container {
+        padding: 0 8px;
+        border: none;
+    }
+
+    .hostTypes-hostType:hover {
+        cursor: pointer;
+        opacity: 1;
+        color: #000;
+        border-bottom: 2px solid #000;
+    }
+}

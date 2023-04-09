@@ -1,0 +1,52 @@
+.card {
+    width: 300px;
+    background-color: transparent;
+    border: none;
+    z-index: 1;
+    position: relative;
+}
+
+.card-img {
+    height: 300px;
+    width: 100%;
+}
+
+.card-data {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.card-favorite-btn{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    color: rgb(85, 85, 85);
+}
+
+.favorite{
+    color: #f00;
+}
+
+.card-data-title{
+    margin-top: 5px;
+}
+
+.card-data-desc{
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #888;
+}
+
+.card-data-price{
+    font-size: 16px;
+}
+
+@media (max-width:500px) {
+    .card {
+        width: 100%;
+    }
+}
+

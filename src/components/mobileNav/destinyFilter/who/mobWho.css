@@ -1,0 +1,50 @@
+
+.mobWho {
+    height: 369px;
+    width: 95%;
+    border-radius: 20px;
+    box-shadow: 0 0 8px #00000030;
+    background-color: #fff;
+    padding: 20px;
+    align-self: center;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+.mobWho-title {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+
+.mobWho-buttons-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mobWho-buttons {
+    display: flex;
+    margin: 20px 0;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.mobWho-button {
+    width: 32px;
+    height: 32px;
+    padding-top: 3px;
+    border-radius: 50%;
+    border: 1px solid #00000040;
+    background-color: transparent;
+}
+
+.mobWho-button--disabled{
+    border: 1px solid #00000010;
+    color: #717171;
+}
+
+.mobWho-button-text{
+    font-size: .9rem;
+    color: #717171;
+}

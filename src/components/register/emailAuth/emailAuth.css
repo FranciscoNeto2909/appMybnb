@@ -1,0 +1,46 @@
+.emailauth {
+    margin: 45px 0 0;
+}
+
+.emailauth-notice {
+    padding: 16px 0;
+    text-align: center;
+}
+
+.emailauth-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.emailauth-form-input {
+    padding: 10px 16px;
+    font-size: 28px;
+    text-align: center;
+    outline: none;
+    letter-spacing: 4px;
+}
+
+.emailauth-form-error {
+    color: #f00;
+    font-size: .9rem;
+    align-self: flex-start;
+}
+
+.emailauth-form-button{
+    margin-top: 16px;
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    font-size: 18px;
+    color: #fff;
+    background-color: #222;
+    cursor: pointer;
+}
+
+.emailauth-options, .emailauth-help{
+    font-size: .9rem;
+    text-align: start;
+    padding: 0 24px;
+    margin: 8px 0;
+}

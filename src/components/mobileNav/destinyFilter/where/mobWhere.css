@@ -1,0 +1,81 @@
+.mobWhere {
+    height: 370;
+    width: 264;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 20px 0;
+    margin: 0 10px;
+    padding: 20px;
+    border-radius: 24px;
+    box-shadow: 0 4px 14px #0002;
+}
+
+.mobWhere-search {
+    border: 1px solid #00000030;
+    border-radius: 12px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.mobWhere-search-input {
+    height: 58px;
+    width: 90%;
+    padding: 1px 8px 1px 2px;
+    border: none;
+    outline: none;
+}
+
+.mobWhere-regions-container {
+    display: flex;
+    overflow-x: scroll;
+    gap: 0 20px;
+}
+
+.mobWhere-regions-container::-webkit-scrollbar {
+    height: 0;
+}
+
+.mobWhere-regions {
+    height: 158px;
+    width: 132px;
+}
+
+.mobWhere-regions-img {
+    height: 126px;
+    width: 126px;
+    border: 2px solid #00000030;
+    border-radius: 12px;
+}
+
+.mobWhere-regions-title {
+    font-size: .9rem;
+}
+
+.mobWhere-buttons {
+    margin: 0 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.mobWhere-buttons--space-top {
+    margin-top: 30px;
+}
+
+.mobWhere-button {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 10px;
+    border: none;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 0 6px #00000030;
+}
+
+.mobWhere-button-text {
+    color: #717171;
+}

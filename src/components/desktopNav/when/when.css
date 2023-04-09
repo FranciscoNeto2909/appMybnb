@@ -1,0 +1,43 @@
+.when-title {
+    font-size: 1.3rem;
+    align-self: center;
+}
+
+.when-buttons {
+    background-color: #ddd;
+    padding: 4px;
+    display: flex;
+    gap: 5px;
+    border-radius: 25px;
+}
+
+.when-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    background-color: transparent;
+}
+
+.when-button:hover {
+    cursor: pointer;
+}
+
+.when-button-text {
+    color: #717171;
+}
+
+.when-button--selected {
+    background-color: #fff;
+}
+
+.when-button-text--dark {
+    font-weight: bold;
+}
+
+.when-datepicker-container{
+    margin-top: 20px;
+}
+
+.when-datepicker-container{
+    transform: scale(1.2);
+}

@@ -1,0 +1,122 @@
+.mobSearchDestiny {
+    height: 100vh;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    position: absolute;
+    background-color: #f7f7f7;
+    z-index: 5;
+}
+
+.mobSearchDestiny-buttons {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    bottom: 0;
+    padding: 12px 24px;
+    background-color: #ffffff80;
+}
+
+.mobSearchDestiny-buttons-btn-clear,
+.mobSearchDestiny-buttons-btn-next {
+    border: none;
+    background-color: transparent;
+    border-bottom: 1px solid #000;
+    font-size: 1rem;
+}
+
+.mobSearchDestiny-buttons-btn-search {
+    padding: 8px 24px;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    background: linear-gradient(to right, #e61e4d 27.5%, #e31c5f 40%, #d70466 57.5%, #bd1e59 75%, #bd1e59 100%);
+}
+
+.btn-search-img {
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+.btn-search-next {
+    border: none;
+    color: #fff;
+    background-color: #222;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.mobSearchDestiny-header {
+    height: 80px;
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding-top: 8px;
+}
+
+.header-closeBtn {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    padding: 3px 10px 6px 10px;
+    font-size: 17px;
+    font-weight: bold;
+    background-color: #fff;
+    border: 1px solid #00000030;
+    border-radius: 50%;
+}
+
+.header-backBtn {
+    position: absolute;
+    top: 18px;
+    left: 16px;
+    background-color: #fff;
+    border-radius: 50%;
+    padding: 3px;
+    border: 1px solid #00000030;
+}
+
+.header-options {
+    position: relative;
+}
+
+.options-buttons {
+    margin: 6px 10px;
+    padding: 5px 5px 0;
+    border: 0;
+    font-size: 16px;
+    background-color: transparent;
+    font-weight: bold;
+    color: #717171;
+}
+
+.options-buttons--selected{
+    color: #000;
+}
+
+.options-marker {
+    position: absolute;
+    border-bottom: 3px solid #717171;
+    width: 40%;
+    left: 15px;
+    transition: 300ms ease-in-out;
+}
+
+.translate-left {
+    left: 15px;
+}
+
+.translate-right {
+    left: 142px;
+}

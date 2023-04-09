@@ -1,0 +1,458 @@
+.filter-container {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #00000070;
+    z-index: 4;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.filter {
+    width: 780px;
+    height: 585px;
+    background-color: #fff;
+    border-radius: 12px;
+    z-index: 5;
+}
+
+.filter-header {
+    position: relative;
+    padding: 24px;
+    text-align: center;
+    border-bottom: 1px solid #00000030;
+}
+
+.filter-header-title {
+    font-size: 1.05rem;
+}
+
+.filter-header-button {
+    position: absolute;
+    left: 24px;
+    border: none;
+    background-color: transparent;
+    color: #222;
+}
+
+.filter-header-button:hover {
+    cursor: pointer;
+}
+
+.filter-main {
+    padding: 0 24px;
+    height: 74%;
+    overflow-y: scroll;
+}
+
+.filter-main-price,
+.filter-main-place {
+    padding: 32px 0;
+    border-bottom: 1px solid #00000030;
+}
+
+.filter-main-price-title {
+    margin-bottom: 8px;
+    color: #222;
+}
+
+.filter-main-price-desc {
+    color: #717171;
+}
+
+.filter-main-price-table {
+    width: 100%;
+    padding: 8px;
+    margin: 24px 2px 6px;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 0 2px;
+}
+
+.filter-main-price-table-col {
+    width: 12px;
+    background-color: #969696;
+}
+
+.filter-main-price-prices {
+    display: flex;
+    gap: 0 24px;
+    justify-content: center;
+    align-items: center;
+}
+
+.filter-main-price-prices-min,
+.filter-main-price-prices-max {
+    display: flex;
+    flex-direction: column;
+    gap: 8px 0;
+    padding: 8px;
+    border: 1px solid #969696;
+    border-radius: 8px;
+    width: 40%;
+}
+
+
+.filter-main-price-prices-min-lbl,
+.filter-main-price-prices-max-lbl {
+    font-size: .8rem;
+    color: #717171;
+}
+
+.filter-main-price-prices-min-inpt,
+.filter-main-price-prices-max-inpt {
+    border: none;
+    outline: none;
+    padding-left: 6px;
+    font-size: 1rem;
+    width: 80%;
+}
+
+.filter-main-price-prices-divisor {
+    font-size: 32px;
+}
+
+.filter-main-place-title {
+    width: 100%;
+}
+
+.filter-main-place-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 24px 0;
+}
+
+.filter-main-place-buttons:hover {
+    cursor: pointer;
+}
+
+.filter-main-place-buttons-box {
+    width: 50%;
+    display: flex;
+    padding: 12px 0;
+    gap: 0 12px;
+}
+
+.filter-main-place-buttons-box-input {
+    min-height: 20px;
+    min-width: 20px;
+    align-self: baseline;
+    pointer-events: none;
+}
+
+.filter-main-place-buttons-box-texts {
+    display: flex;
+    flex-direction: column;
+    gap: 4px 0;
+    color: #222;
+    pointer-events: none;
+}
+
+.filter-main-place-buttons-box-texts-desc {
+    font-size: 14px;
+    color: #717171;
+}
+
+.filter-main-roomsandbeds {
+    padding: 24px 0;
+    border-bottom: 1px solid #00000030;
+}
+
+.filter-main-roomsandbeds-title {
+    color: #222;
+    margin-bottom: 24px;
+}
+
+.filter-main-roomsandbeds-options-title {
+    font-size: 16px;
+    color: #222;
+    font-weight: normal;
+    margin-bottom: 16px;
+    font-weight: bold;
+}
+
+.filter-main-roomsandbeds-options-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    overflow-x: scroll;
+    gap: 4px;
+    padding-bottom: 16px;
+}
+
+.filter-main-roomsandbeds-options-buttons::-webkit-scrollbar {
+    height: 0;
+}
+
+.filter-main-roomsandbeds-options-buttons .selected {
+    background-color: #000;
+    color: #fff;
+}
+
+.filter-main-roomsandbeds-options-buttons-button {
+    background-color: transparent;
+    border: 1px solid #bdbdbd;
+    padding: 14px 24px;
+    border-radius: 24px;
+    cursor: pointer;
+}
+
+.filter-main-roomsandbeds-options-buttons-button:not(.selected):hover {
+    border: 1px solid #000;
+}
+
+.filter-main-hostType {
+    padding: 24px 0;
+    border-bottom: 1px solid #00000030;
+}
+
+.filter-main-hostType-title {
+    color: #222;
+    font-weight: bold;
+    padding-bottom: 24px;
+}
+
+.filter-main-hostType-buttons {
+    min-height: 130px;
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+}
+
+.filter-main-hostType-buttons-button {
+    width: calc(100%/4);
+    border: 1px solid #bdbdbd;
+    border-radius: 16px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.filter-main-hostType-buttons .selected {
+    border: 1px solid #000;
+}
+
+.filter-main-hostType-buttons-button:hover {
+    cursor: pointer;
+    border: 1px solid #000;
+}
+
+.filter-main-hostType-buttons-button-hostType-img {
+    height: 30px;
+    width: 30px;
+    pointer-events: none;
+}
+
+.filter-main-confort {
+    padding: 24px 0;
+    border-bottom: 1px solid #00000030;
+}
+
+.filter-main-confort-title {
+    padding-bottom: 24px;
+    color: #222;
+}
+
+.filter-main-confort-subtitle {
+    padding-bottom: 16px;
+    font-size: 16px;
+    color: #222;
+}
+
+.filter-main-confort-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.filter-main-confort-buttons-button {
+    padding: 16px 0;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.filter-main-confort-buttons-button-inpt {
+    height: 20px;
+    width: 20px;
+    margin-right: 10px;
+}
+
+.filter-main-confort-buttons-button-text {
+    color: #222;
+    font-size: 16px;
+}
+
+.filter-main-reserve {
+    padding: 24px 0;
+    border-bottom: 1px solid #00000030;
+}
+
+.filter-main-reserve-title {
+    color: #222;
+    padding-bottom: 16px;
+}
+
+.filter-main-reserve-buttons {
+    display: flex;
+    padding: 12px 0;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+
+.filter-main-reserve-buttons-switch {
+    display: flex;
+    align-items: center;
+    padding: 4px;
+    width: 50px;
+    height: 35px;
+    border-radius: 25px;
+    background-color: #00000030;
+    cursor: pointer;
+}
+
+.filter-main-reserve-buttons-texts {
+    width: 80%;
+}
+
+.filter-main-reserve-buttons-texts-title {
+    color: #222;
+    font-size: 16px;
+}
+
+.filter-main-reserve-buttons-texts-desc {
+    padding-top: 4px;
+    font-size: 14px;
+    color: #717171;
+}
+
+.filter-main-reserve-buttons-switch:not(.selected):hover {
+    background-color: #00000050;
+}
+
+.filter-main-reserve-buttons-switch-button {
+    height: 25px;
+    width: 25px;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: 500ms linear;
+}
+
+.switch {
+    transform: translateX(16px);
+    background-color: #222;
+}
+
+.filter-main-reserve-buttons-switch-inpt {
+    display: none;
+}
+
+.filter-main-lang {
+    padding-top: 24px;
+}
+
+.filter-main-lang-title {
+    color: #222;
+    padding-bottom: 16px;
+}
+
+.filter-main-lang-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+
+}
+
+.filter-main-lang-button {
+    padding: 12px 0;
+}
+
+.filter-main-lang-button-lbl {
+    display: flex;
+    gap: 12px;
+    cursor: pointer;
+}
+
+.filter-main-lang-button-inpt {
+    height: 20px;
+    width: 20px;
+}
+
+
+.filter-footer {
+    height: 80px;
+    border-top: 1px solid #00000030;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+}
+
+.filter-footer-button {
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.filter-footer-button--remove {
+    text-decoration: underline;
+    background-color: transparent;
+    color: #333;
+}
+
+.filter-footer-button--filter {
+    color: #fff;
+    background-color: #222;
+    border-radius: 8px;
+    padding: 14px 24px;
+}
+
+@media (max-width:500px) {
+
+    .filter-container {
+        padding: 0;
+        padding-top: 10px;
+    }
+
+    .filter {
+        width: 100%;
+        height: 100%;
+        border-radius: 16px 16px 0 0;
+    }
+
+    .filter-header{
+        padding: 16px;
+    }
+
+    .filter-main {
+        padding-left: 24px;
+        height: 83%;
+        overflow-y: scroll;
+    }
+
+    .filter-main-place-buttons-box {
+        width: 100%;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+    }
+
+    .filter-main-roomsandbeds-options-buttons-button {
+        white-space: nowrap;
+    }
+
+    .filter-main-hostType-buttons {
+        flex-wrap: wrap;
+    }
+
+    .filter-main-hostType-buttons-button {
+        width: 45%;
+        height: 120px;
+    }
+}

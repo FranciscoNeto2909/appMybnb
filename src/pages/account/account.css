@@ -1,0 +1,91 @@
+.account {
+    width: 75%;
+    margin: 0 auto;
+    padding-bottom: 56px;
+}
+
+.account-user{
+    padding-left: 12px;
+    margin: 56px 0 32px 16px;
+}
+
+.account-title{
+    font-size: 32px;
+}
+
+.account-user-name, .account-user-email, .account-user-profile{
+    font-size: 18px;
+}
+
+.account-options{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+    margin-top:32px;
+}
+
+.account-option{
+    height: 160px;
+    width: 308px;
+    border-radius: 8px;
+    padding: 16px 8px;
+    box-shadow: 0 0 4px #00000050;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    position: relative;
+}
+
+.account-option-desc-text{
+    display: inline-block;
+    padding-top: 6px;
+    font-size: 15px;
+    color: #717171;
+}
+
+.account-option-right{
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 13px;
+}
+
+@media (max-width: 750px) {
+    .account {
+        width: 100%;
+        padding: 0;
+        padding: 0 16px 77px 16px;
+    }
+
+    .account-title{
+        font-size: 22px;
+    }
+
+    .account-user{
+        padding-left: 0;
+        margin: 16px 0 32px 0;
+    }
+
+    .account-option{
+        height: 100px;
+        width: 100%;
+        box-shadow: none;
+        border-radius: 0;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .account-options-icons{
+        display: none;
+    }
+
+    .account-user-btn-back{
+        margin-bottom: 52px;
+    }
+    .account-option-right{
+       display: block;
+    }
+}

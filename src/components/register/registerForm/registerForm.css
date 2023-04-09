@@ -1,0 +1,121 @@
+.name,
+.birthDate,
+.phone,
+.password,
+.service-terms {
+    margin: 16px 0;
+}
+
+.service-terms {
+    font-size: .95rem;
+    color: #222;
+}
+
+.name-desc {
+    padding-top: 8px;
+    font-size: .9rem;
+    color: #333;
+}
+
+.registerForm-title {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 8px 0;
+}
+
+.lbl {
+    position: absolute;
+    left: 8px;
+    top: 22px;
+    transition: 0.7s;
+    opacity: 0.6;
+}
+
+.lbl-error {
+    color: #f00;
+    transition: none;
+    opacity: 1;
+}
+
+.input-group {
+    position: relative;
+}
+
+.inpt {
+    width: 100%;
+    height: 50px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    padding: 0 8px;
+    outline: none;
+    margin: 8px 0;
+    background-color: transparent;
+}
+.inpt--date{
+    width: 50%;
+    margin: 8px 0;
+    color: #717171;
+}
+
+.inpt:focus~.lbl,
+.inpt:valid~.lbl,
+.inpt:not(:placeholder-shown).inpt:not(:focus)~.lbl {
+    font-size: .9rem;
+    transform: translateY(-30px);
+}
+
+.inpt-error {
+    border: 2px solid #f00;
+    color: #f00;
+}
+
+.registerForm-button {
+    padding: 18px;
+    margin: 8px 0;
+    width: 100%;
+    font-size: 18px;
+    background-color: #0B5ED7;
+    border-radius: 8px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+summary::-webkit-details-marker {
+    display: none;
+}
+
+summary::after {
+    background-color: #000;
+    content: "?";
+    color: #fff;
+    font-weight: bold;
+    padding: 0 5px;
+    margin-left: 5px;
+    border-radius: 50%;
+    text-align: center;
+    width: 20px;
+    left: 20px;
+    margin-right: 10px;
+}
+
+details[open] summary::after {
+    content: "x";
+}
+
+.registerForm-birthDate-desc {
+    display: inline-block;
+    padding-bottom: 8px;
+}
+
+.register-form-notice {
+    font-size: .9rem;
+    padding-bottom: 16px;
+}
+
+@media (max-width:750px) {
+    .inpt--date{
+        width: 100%;
+    }
+}

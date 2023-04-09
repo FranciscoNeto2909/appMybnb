@@ -1,0 +1,60 @@
+.hostsFilter {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    cursor: initial;
+    padding: 0 15px;
+}
+
+.hostsFilter-hosts {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    justify-content: center;
+    gap: 5px;
+}
+
+.hostsFilter-hosts-border {
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgb(235, 235, 235);
+}
+
+
+.hostsFilter-hosts-buttons {
+    position: absolute;
+    right: 5px;
+}
+
+.hostsFilter-title {
+    font-size: .95rem;
+    color: #222;
+}
+
+.hostsFilter-desc {
+    margin-top: 5px;
+    font-size: .8rem;
+    color: #717171;
+}
+
+.hostsFilter-hosts-buttons {
+    display: flex;
+    align-items: center;
+    gap: 0 10px;
+}
+
+.hostsFilter-hosts-button {
+    width: 32px;
+    height: 32px;
+    padding-top: 3px;
+    border-radius: 50%;
+    border: 1px solid #00000040;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.hostsFilter-hosts-button--disabled {
+    border: 1px solid #00000010;
+    color: #717171;
+    cursor: not-allowed;
+}

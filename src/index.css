@@ -1,0 +1,56 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  font-family: 'Roboto Flex', 'segoe Ui', sans-serif;
+}
+
+body {
+  background-color: #fafafa;
+}
+
+a{
+  color: inherit;
+}
+
+.hideScroll {
+  max-height: 100vh;
+  overflow: hidden;
+}
+
+.home {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  padding: 8px 24px;
+  gap: 30px 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  z-index: 1;
+}
+
+.font-small {
+  font-size: .9rem;
+}
+
+@media (max-width : 500px) {
+  body::-webkit-scrollbar {
+    width: 0;
+  }
+
+  .navbar {
+    top: auto;
+    bottom: 0;
+  }
+
+  .home {
+    margin-bottom: 80px;
+    padding: 8px 16px;
+  }
+}
