@@ -3,7 +3,7 @@
     position: fixed;
     bottom: 0;
     display: block;
-    height: 60px;
+    height: 55px;
     z-index: 4;
     background-color: #fff;
     box-shadow: 0 -2px 4px #00000020;
@@ -23,7 +23,7 @@
     align-items: center;
     color: rgb(109, 108, 108);
     font-weight: 600;
-    font-size: .85rem;
+    font-size: .80rem;
 }
 
 .mobNav-item-selected {

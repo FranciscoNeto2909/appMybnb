@@ -116,6 +116,10 @@
         border: none;
     }
 
+    .hostTypes-hostType {
+        padding: 4px 12px;
+    }
+
     .hostTypes-hostType:hover {
         cursor: pointer;
         opacity: 1;
