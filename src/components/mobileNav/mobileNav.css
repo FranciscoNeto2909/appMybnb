@@ -23,7 +23,7 @@
     align-items: center;
     color: rgb(109, 108, 108);
     font-weight: 600;
-    font-size: .80rem;
+    font-size: .70rem;
 }
 
 .mobNav-item-selected {
@@ -79,10 +79,14 @@
 }
 
 .mobDestinyButton-item-texts {
-    flex-grow: 1;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .mobDestinyButton-item-text {
+    overflow: hidden;
     font-size: .85rem;
     color: #717171;
 }
@@ -105,6 +109,6 @@
     display: flex;
     padding: 8px;
     border-radius: 50%;
-    border: 1px solid #717171;
+    border: 1px solid #DDDDDD;
     background-color: transparent;
 }

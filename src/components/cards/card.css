@@ -1,5 +1,7 @@
 .card {
-    width: 300px;
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
     background-color: transparent;
     border: none;
     z-index: 1;
@@ -7,8 +9,8 @@
 }
 
 .card-img {
-    height: 300px;
-    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 1;
 }
 
 .card-data {
@@ -23,7 +25,8 @@
     right: 10px;
     background: transparent;
     border: none;
-    color: rgb(85, 85, 85);
+    color:#fff;
+    cursor: pointer;
 }
 
 .favorite{
@@ -42,11 +45,5 @@
 
 .card-data-price{
     font-size: 16px;
-}
-
-@media (max-width:500px) {
-    .card {
-        width: 100%;
-    }
 }
 

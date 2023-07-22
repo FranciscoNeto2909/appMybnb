@@ -1,6 +1,6 @@
 import React, { useState } from "react"
-import { AiOutlineSearch, AiOutlineCar, AiOutlineHeart, AiOutlineMessage, AiOutlineUser } from "react-icons/ai"
-import { BsSliders } from "react-icons/bs"
+import { AiOutlineSearch, AiOutlineHeart, AiOutlineMessage, AiOutlineUser } from "react-icons/ai"
+import { BsSliders, BsAirplane } from "react-icons/bs"
 import { useDispatch, useSelector } from "react-redux"
 import { useLocation, Link } from "react-router-dom"
 import { showFilter, showLogin, showModal, showNav } from "../../assets/appSlice"
@@ -63,7 +63,7 @@ export default function MobNav() {
                 <ul className="mobNav-items-container">
                     <li>
                         <Link to="/" className="mobNav-item">
-                            <AiOutlineSearch size={25} className={`${pathname === "/" && "mobNav-item-selected"}`} />
+                            <AiOutlineSearch strokeWidth={40} size={25} className={`${pathname === "/" && "mobNav-item-selected"}`} />
                             <span className={`${pathname === "/" && "mobNav-item-selected--text"}`} >Explorar</span>
                         </Link>
                     </li>
@@ -77,7 +77,7 @@ export default function MobNav() {
                         <>
                             <li>
                                 <Link to="/travels" className="mobNav-item">
-                                    <AiOutlineCar size={25} className={`${pathname === "/travels" && "mobNav-item-selected"}`} />
+                                    <BsAirplane size={25} className={`${pathname === "/travels" && "mobNav-item-selected"}`} />
                                     <span className={`${pathname === "/travels" && "mobNav-item-selected--text"}`} >Viagens</span>
                                 </Link>
                             </li>

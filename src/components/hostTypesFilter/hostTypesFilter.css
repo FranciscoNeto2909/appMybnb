@@ -36,7 +36,7 @@
     gap: 0 8px;
     border-radius: 12px;
     padding: 12px 8px;
-    border: 1px solid #7171712c;
+    border: 1px solid #DDDDDD;
     background-color: transparent;
 }
 
@@ -52,7 +52,7 @@
 .hostTypes-button {
     display: flex;
     border-radius: 50%;
-    border: 1px solid #717171;
+    border: 1px solid #DDDDDD;
     background-color: transparent;
     padding: 4px;
 }
