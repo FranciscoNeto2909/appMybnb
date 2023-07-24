@@ -5,14 +5,16 @@ import Who from "./who/Who"
 import When from "./when/When"
 import SearchDestiny from "./where/SearchDestiny"
 import HostTypesFilter from "../hostTypesFilter/HostTypesFilter"
-import { hideModal, logout, showLogin, showMenu, showModal } from '../../assets/appSlice';
+import { hideModal, showLogin, showMenu, showModal } from '../../assets/appSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import logo from "../../imgs/logo.png"
+import { logout } from '../../assets/userSlice';
 
 export default function DesktopNav() {
     const navigate = useNavigate()
-    const { isLogged, isMenuOpened } = useSelector(data => data.app)
+    const { isMenuOpened } = useSelector(data => data.app)
+    const { isLogged } = useSelector(data => data.user)
     const [choisingDest, setChoisingDest] = useState(false)
     const [destOption, setDestOption] = useState('op1')
     const [acmdOption, setAcmdOption] = useState("where")
@@ -34,6 +36,7 @@ export default function DesktopNav() {
     function handleLogout() {
         dispatch(logout())
         dispatch(hideModal())
+        localStorage.clear()
     }
 
     function handleSetDestinyOption(e) {

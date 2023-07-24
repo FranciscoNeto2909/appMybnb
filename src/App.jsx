@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Home from "./pages/Home";
 import Host from "./pages/Host";
@@ -13,8 +13,15 @@ import PersonalInfos from "./components/personalInfos/PersonalInfos";
 import Profile from "./pages/profile/Profile";
 import LoginAndSecurity from "./components/loginAndSecurity/LoginAndSecurity";
 import { getAcomodations } from "./assets/housesSlice"
+import { getUser } from "./assets/userSlice"
+
+
 export default function App() {
+  const token = localStorage.getItem('token')
+  const id = localStorage.getItem('userId')
   const dispatch = useDispatch()
+  const navigate = useNavigate()
+
   const { isModalOpened, isFilterOpened, isLoginOpened } = useSelector(data => data.app)
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -24,6 +31,13 @@ export default function App() {
       dispatch(hideMenu())
     }
   }
+
+  useEffect(() => {
+    navigate("/")
+    if (token !== null && id !== null) {
+      dispatch(getUser(id))
+    }
+  }, []);
 
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);

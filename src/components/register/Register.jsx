@@ -7,10 +7,12 @@ import "./register.css"
 import RegisterForm from "./registerForm/RegisterForm"
 import Login from "../login/Login"
 import { useNavigate } from "react-router-dom"
+import { emailAuth } from "../../assets/userSlice"
 
 export default function Register() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    const [inLoading, setInLoading] = useState(false)
     const [step, setStep] = useState(1)
     const [error, setError] = useState(false)
     const [loading, setLoading] = useState(false)
@@ -61,9 +63,15 @@ export default function Register() {
             }, 2000);
         } else if (emailRegex.test(loginData.email)) {
             const code = await handleGenerateAuthCode()
-            setLoading(false)
+            setInLoading(true)
             console.log(code)
-            setStep(step + 1)
+            dispatch(emailAuth({
+                email: loginData.email,
+                code: code
+            })).then(() => {
+                setInLoading(false)
+                setStep(step + 1)
+            })
         }
     }
 
@@ -127,7 +135,7 @@ export default function Register() {
                         <EmailAuth code={loginData.code} setStep={setStep} />
                     }
                     {step === 3 &&
-                        <RegisterForm />
+                        <RegisterForm setStep={setStep} email={loginData.email} />
                     }
                     {step === 4 &&
                         <Login />

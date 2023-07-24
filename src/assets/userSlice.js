@@ -85,7 +85,7 @@ const userSlice = createSlice({
       sex: "",
       address: ""
     },
-    isLogged: true
+    isLogged: false
   },
   reducers: {
     logout(state) {

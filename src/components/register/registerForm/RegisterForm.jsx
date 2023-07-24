@@ -1,11 +1,15 @@
 import React, { useState } from "react"
+import { createUser } from "../../../assets/userSlice"
+import { useDispatch } from "react-redux"
 import { mask } from "remask"
-// import { hash } from "bcryptjs" 
+import { hash } from "bcryptjs"
 import "./registerForm.css"
 
-export default function RegisterForm() {
+export default function RegisterForm({setStep, email}) {
     const data = new Date()
     const year = data.getFullYear()
+    const dispatch = useDispatch()
+
     const passwordRegex = new RegExp("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8,})$")
 
     const [errors, setErrors] = useState({
@@ -16,6 +20,7 @@ export default function RegisterForm() {
         confirmPass: false,
         birthDate: false
     })
+
     const [userData, setUserData] = useState({
         name: "",
         lastName: "",
@@ -25,8 +30,6 @@ export default function RegisterForm() {
         birthDate: "",
     })
 
-    // const dispatch = useDispatch()
-    // const navigate = useNavigate()
 
     function handleMaskPhone(e) {
         setUserData({ ...userData, phone: mask(`${e.target.value}`, ['(99) 99999-9999']) })
@@ -70,16 +73,15 @@ export default function RegisterForm() {
             }, 2000);
         }
         else {
-            console.log(userData)
-            // const hashedPassword = await hash(userData.password, 8)
-
-            // dispatch(createUser({
-            //     name: `${userData.name} ${userData.lastName}`,
-            //     phone: userData.phone,
-            //     email: userData.email,
-            //     password: hashedPassword,
-            //     birthDate: userData.birthDate
-            // })).then(() => navigate("/login"))
+            const hashedPassword = await hash(userData.password, 8)
+            
+            await dispatch(createUser({
+                name: `${userData.name} ${userData.lastName}`,
+                phone: userData.phone,
+                email: email,
+                password: hashedPassword,
+                birthDate: userData.birthDate
+            })).then(() =>  setStep(4))
         }
     }
 

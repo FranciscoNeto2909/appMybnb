@@ -3,7 +3,7 @@ import { AiOutlineRight, AiOutlineSolution, AiOutlineSetting, AiOutlineHome, AiO
 import { Link, useNavigate } from "react-router-dom"
 import "./profile.css"
 import { useDispatch } from "react-redux"
-import { logout } from "../../assets/appSlice"
+import { logout } from "../../assets/userSlice"
 export default function Profile({ windowWidth }) {
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -13,6 +13,7 @@ export default function Profile({ windowWidth }) {
 
     function handleLogout() {
         dispatch(logout())
+        localStorage.clear()
         navigate("/")
     }
 

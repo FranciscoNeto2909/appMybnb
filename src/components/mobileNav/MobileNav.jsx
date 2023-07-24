@@ -11,7 +11,7 @@ import "./mobileNav.css"
 export default function MobNav() {
     const dispatch = useDispatch()
     const { pathname } = useLocation()
-    const isLogged = useSelector(data => data.app.isLogged)
+    const isLogged = useSelector(data => data.user.isLogged)
     const [choisingDest, setChoisingDest] = useState(false)
     const isNavVisible = useSelector(data => data.app.isNavVisible)
 
@@ -31,11 +31,6 @@ export default function MobNav() {
     function handleLogin() {
         dispatch(showModal())
         dispatch(showLogin())
-    }
-
-    function handleLogout() {
-        dispatch(logout())
-        navigate("/")
     }
 
     return (
@@ -89,7 +84,7 @@ export default function MobNav() {
                                     <span className={`${pathname === "/messages" && "mobNav-item-selected--text"}`} >Mensagens</span>
                                 </Link>
                             </li>
-                            <li onClick={handleLogout}>
+                            <li>
                                 <Link to="/profile" className="mobNav-item">
                                     <AiOutlineUser size={25} className={`${pathname === "/profile" | pathname === "/account" && "mobNav-item-selected"}`} />
                                     <span className={`${pathname === "/profile" | pathname === "/account" && "mobNav-item-selected--text"}`} >Perfil</span>

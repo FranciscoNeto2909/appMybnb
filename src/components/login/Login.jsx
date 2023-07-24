@@ -1,50 +1,71 @@
 import { useState } from "react"
+import { getUser, login } from "../../assets/userSlice"
+import { hideLogin, hideModal } from "../../assets/appSlice"
 import "./login.css"
+import { useNavigate } from "react-router-dom"
+import { useDispatch } from "react-redux"
 
 export default function Login() {
+    const [inLoading, setInLoading] = useState(false)
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
     const emailRegex = new RegExp("^[_a-z0-9-]+([_a-z0-9-]+)*@[a-z0-9-]+([a-z0-9-]+).([a-z]{2,3})$")
 
     const [errors, setErrors] = useState({
         email: false,
         password: false,
+        loginError: false
     })
 
-    const [loginData, setLoginData] = useState({
+    const [user, setUser] = useState({
         email: "",
         password: ""
     })
 
     function handleChangeEmail(e) {
-        setLoginData({ ...loginData, email: e.target.value })
+        setUser({ ...user, email: e.target.value })
     }
 
     function handleChangePassword(e) {
-        setLoginData({ ...loginData, password: e.target.value })
+        setUser({ ...user, password: e.target.value })
     }
 
     function handleLogin() {
-        if (loginData.email === "") {
+        if (user.email === "") {
             setErrors({ ...errors, email: true })
             setTimeout(() => {
                 setErrors({ ...errors, email: false })
             }, 2000);
-        } else if (!emailRegex.test(loginData.email)) {
+        } else if (!emailRegex.test(user.email)) {
             setErrors({ ...errors, email: true })
             setTimeout(() => {
                 setErrors({ ...errors, email: false })
             }, 2000);
-        } else if (loginData.password === "") {
+        } else if (user.password === "") {
             setErrors({ ...errors, password: true })
             setTimeout(() => {
                 setErrors({ ...errors, password: false })
             }, 2000);
-        } else if (loginData.password !== "abc123") {
-            setErrors({ ...errors, password: true })
-            setTimeout(() => {
-                setErrors({ ...errors, password: false })
-            }, 2000);
-        } else {
-            console.log("login feito")
+        } else if (inLoading == false) {
+            setInLoading(true)
+            dispatch(login(user))
+                .then(e => {
+                    if (e.payload.error == false) {
+                        const userId = e.payload.userId
+                        localStorage.setItem("userId", userId.toString())
+                        dispatch(getUser(userId.toString()))
+                        setInLoading(false)
+                        dispatch(hideModal())
+                        dispatch(hideLogin())
+                        navigate("/")
+                    } else {
+                        setErrors({ ...errors, loginError: true })
+                        setTimeout(() => {
+                            setErrors({ ...errors, loginError: false })
+                        }, 2500);
+                    }
+                });
         }
     }
 
@@ -53,18 +74,18 @@ export default function Login() {
             <p className="login-desc">Faça login com sua conta para acessar seus dados no myBnb</p>
             <form className="login-form">
                 <div className="login-form-group input-group">
-                    <input id="email" type="email" placeholder=" " autoComplete="none" required className={`inpt ${errors.email && "inpt-error"}`} autoCapitalize="on" onChange={handleChangeEmail} value={loginData.email} />
+                    <input id="email" type="email" placeholder=" " autoComplete="none" required className={`inpt ${errors.email && "inpt-error"}`} autoCapitalize="on" onChange={handleChangeEmail} value={user.email} />
                     <label className={`lbl ${errors.email && "lbl-error"}`} htmlFor="email">Email</label>
                 </div>
                 {errors.email &&
-                    <span className="lbl-error font-small">{loginData.email === "" ? "Este campo não pode ser vazio" : "Digite um email válido"}</span>}
+                    <span className="lbl-error font-small">{user.email === "" ? "Este campo não pode ser vazio" : "Digite um email válido"}</span>}
                 <div className="login-form-group input-group">
-                    <input id="password" type="" required placeholder=" " className={`inpt ${errors.password && "inpt-error"}`} autoCapitalize="on" value={loginData.password} onChange={handleChangePassword} />
+                    <input id="password" type="" required placeholder=" " className={`inpt ${errors.password && "inpt-error"}`} autoCapitalize="on" value={user.password} onChange={handleChangePassword} />
                     <label className={`lbl ${errors.password && "lbl-error"}`} htmlFor="">Senha</label>
                 </div>
                 {errors.password &&
-                    <span className="lbl-error font-small">{loginData.password === "" ? "Este campo não pode ser vazio" : "Email ou senha incorretos"}</span>}
-                <button type="button" className="login-form-btn" onClick={handleLogin}>Login</button>
+                    <span className="lbl-error font-small">{user.password === "" ? "Este campo não pode ser vazio" : "Email ou senha incorretos"}</span>}
+                <button type="button" className="login-form-btn" onClick={handleLogin}>{inLoading ? "Aguarde ..." : "Login"}</button>
             </form>
             <span>Sua senha deve conter numeros, letras maiusculas, letras minusculas e nenhum caracter especial.</span>
             <span className="login-notice">Essa aplicação foi desenvolvida no intuito de praticar programação e não tem nenhum fim comercial ou finançeiro</span>

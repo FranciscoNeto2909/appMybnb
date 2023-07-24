@@ -8,7 +8,6 @@ const slice = createSlice({
         isFilterOpened: false,
         isLoginOpened: false,
         isMenuOpened: false,
-        isLogged: true,
         destinyFilter: {
             localization: "",
             date: "",
@@ -54,12 +53,6 @@ const slice = createSlice({
         hideMenu: (state) => {
             return { ...state, isMenuOpened: false }
         },
-        login: (state) => {
-            return { ...state, isLogged: true }
-        },
-        logout: (state) => {
-            return { ...state, isLogged: false }
-        },
         setDestiny(state) {
             return { ...state, hasDestiny: true }
           },
@@ -74,6 +67,6 @@ const slice = createSlice({
     extraReducers: (builder) => { }
 })
 
-export const { hideNav, showNav, showModal, hideModal, showFilter, hideFilter, showLogin,hideLogin, login, logout, showMenu, hideMenu, setDestiny, clearDestiny, setDestinyFilter } = slice.actions
+export const { hideNav, showNav, showModal, hideModal, showFilter, hideFilter, showLogin,hideLogin, showMenu, hideMenu, setDestiny, clearDestiny, setDestinyFilter } = slice.actions
 
 export default slice.reducer
