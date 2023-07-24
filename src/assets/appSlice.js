@@ -9,6 +9,19 @@ const slice = createSlice({
         isLoginOpened: false,
         isMenuOpened: false,
         isLogged: true,
+        destinyFilter: {
+            localization: "",
+            date: "",
+            hosts: 0,
+            cordenates: "",
+            price:"",
+            hostPlace:"",
+            bedroomsQuant:"",
+            bedsQuant:"",
+            bethroomsQuant:"",
+            hostSpace:"",
+            preferences:""
+          }
     },
     reducers: {
         showNav: (state) => {
@@ -46,11 +59,21 @@ const slice = createSlice({
         },
         logout: (state) => {
             return { ...state, isLogged: false }
-        }
+        },
+        setDestiny(state) {
+            return { ...state, hasDestiny: true }
+          },
+          clearDestiny(state) {
+            return { ...state, hasDestiny: false }
+          },
+          setDestinyFilter(state, {payload}){
+            console.log(payload)
+            return {...state, destinyFilter:{...state.destinyFilter, payload}}
+          }
     },
     extraReducers: (builder) => { }
 })
 
-export const { hideNav, showNav, showModal, hideModal, showFilter, hideFilter, showLogin,hideLogin, login, logout, showMenu, hideMenu } = slice.actions
+export const { hideNav, showNav, showModal, hideModal, showFilter, hideFilter, showLogin,hideLogin, login, logout, showMenu, hideMenu, setDestiny, clearDestiny, setDestinyFilter } = slice.actions
 
 export default slice.reducer

@@ -2,19 +2,26 @@ import React, { useEffect } from "react"
 import { AiOutlineRight, AiOutlineSolution, AiOutlineSetting, AiOutlineHome, AiOutlineControl, AiOutlineBuild, AiOutlineGift, AiOutlineQuestion, AiOutlineGlobal } from "react-icons/ai"
 import { Link, useNavigate } from "react-router-dom"
 import "./profile.css"
-
+import { useDispatch } from "react-redux"
+import { logout } from "../../assets/appSlice"
 export default function Profile({ windowWidth }) {
     const navigate = useNavigate()
+    const dispatch = useDispatch()
     const userAcomodations = [1, 2]
     const userName = "User"
     const userImg = "https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png"
+
+    function handleLogout() {
+        dispatch(logout())
+        navigate("/")
+    }
 
     useEffect(() => {
         if (windowWidth > 500) {
             navigate("/account")
         }
     }, [windowWidth])
-    
+
     return (
         <div className="profile">
             <section className="profile-divisor">
@@ -84,7 +91,7 @@ export default function Profile({ windowWidth }) {
                         <span className="profile-buttons-button-txt">Português (BR)</span></button>
                     <button className="profile-buttons-button">R$ BRL</button>
                 </div>
-                <button className="profile-buttons-logout">Sair</button>
+                <button onClick={handleLogout} className="profile-buttons-logout">Sair</button>
             </section>
             <footer>
                 <p className="profile-notice">Esta aplicação foi desenvolvida no para praticar programação. Não tem nenhum fim comercial ou financeiro.</p>

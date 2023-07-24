@@ -33,16 +33,18 @@ export default function Login() {
             setTimeout(() => {
                 setErrors({ ...errors, email: false })
             }, 2000);
-        }else if(loginData.password === ""){
+        } else if (loginData.password === "") {
             setErrors({ ...errors, password: true })
             setTimeout(() => {
                 setErrors({ ...errors, password: false })
             }, 2000);
-        }else if(loginData.password !== "abc123"){
+        } else if (loginData.password !== "abc123") {
             setErrors({ ...errors, password: true })
             setTimeout(() => {
                 setErrors({ ...errors, password: false })
             }, 2000);
+        } else {
+            console.log("login feito")
         }
     }
 

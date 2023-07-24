@@ -7,6 +7,7 @@ export default function RegisterForm() {
     const data = new Date()
     const year = data.getFullYear()
     const passwordRegex = new RegExp("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8,})$")
+
     const [errors, setErrors] = useState({
         name: false,
         lastName: false,
@@ -105,7 +106,7 @@ export default function RegisterForm() {
                     <input type="password" id="pass" placeholder=" "
                         className="inpt"
                         required value={userData.password}
-                        onChange={e => setUserData({ ...userData, password: e.target.value })} maxLength="10" />
+                        onChange={e => setUserData({ ...userData, password: e.target.value })} />
                     <label htmlFor="pass" className={`lbl ${errors.password && "lbl-error"}`}>Senha</label>
                 </div>
                 {errors.password && userData.password === "" && <p className="lbl-error">Este campo não pode ser vazio!</p>}

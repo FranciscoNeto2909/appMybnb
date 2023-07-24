@@ -3,20 +3,12 @@ import { AiOutlineHeart, AiFillHeart } from "react-icons/ai"
 import Skeleton from 'react-loading-skeleton';
 import "./card.css"
 import "react-loading-skeleton/dist/skeleton.css"
+import ImgsSlider from '../imgsSlider/ImgsSlider';
 
-export default function Card() {
+export default function Card({ house }) {
+  const houseimgs = house.images.split(",")
 
-  const [data, setData] = useState({
-    img: "",
-    title: "",
-    description: ""
-  })
   const [favorite, setFavorite] = useState(false)
-
-  setTimeout(() => {
-    setData({ img: "https://media.istockphoto.com/id/1322277517/photo/wild-grass-in-the-mountains-at-sunset.jpg?s=612x612&w=0&k=20&c=6mItwwFFGqKNKEAzv0mv6TaxhLN3zSE43bWmFN--J5w=", title: "Titulo do card", description: "Descrição do card", price: 300 });
-
-  }, 2000);
 
   return (
     <div className="card">
@@ -25,11 +17,15 @@ export default function Card() {
           <AiFillHeart size={25} className="favorite" /> :
           <AiOutlineHeart size={25} />}
       </button>
-      {data.img ? <img src={data.img} alt="" className='card-img' style={{ borderRadius: "10px" }} /> : <Skeleton height={300} />}
+      <div>
+        {houseimgs.length > 0 ?
+          <ImgsSlider imgs={houseimgs} />
+          : <Skeleton height={300} />}
+      </div>
       <div className="card-data">
-        <h2 className='card-data-title'>{data.title ? data.title : <Skeleton />}</h2>
-        <p className='card-data-desc'>{data.description ? data.description : <Skeleton />}</p>
-        <p className='card-data-price'>{data.price ? <span className='card-data-price--dark'> R${data.price}/noite </span> : <Skeleton />}</p>
+        <h2 className='card-data-title'>{house.title ? house.title : <Skeleton />}</h2>
+        <p className='card-data-desc'>{house.hostDesc ? house.hostDesc : <Skeleton />}</p>
+        <p className='card-data-price'>{house.price ? <span className='card-data-price--dark'> R${house.price}/noite </span> : <Skeleton />}</p>
       </div>
     </div>
   )

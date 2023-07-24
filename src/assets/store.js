@@ -8,5 +8,9 @@ export default configureStore({
         house: housesSlice,
         app: appSlice,
         user: userSlice
-    }
+    },
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+            serializableCheck: false,
+        }),
 })

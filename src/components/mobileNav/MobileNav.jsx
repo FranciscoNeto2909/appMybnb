@@ -3,7 +3,7 @@ import { AiOutlineSearch, AiOutlineHeart, AiOutlineMessage, AiOutlineUser } from
 import { BsSliders, BsAirplane } from "react-icons/bs"
 import { useDispatch, useSelector } from "react-redux"
 import { useLocation, Link } from "react-router-dom"
-import { showFilter, showLogin, showModal, showNav } from "../../assets/appSlice"
+import { hideModal, showFilter, showLogin, showModal, showNav } from "../../assets/appSlice"
 import MobSearchDestiny from "./destinyFilter/MobSearchDestiny"
 import HostTypesFilter from "../hostTypesFilter/HostTypesFilter"
 import "./mobileNav.css"
@@ -17,8 +17,10 @@ export default function MobNav() {
 
     function handleOpenDestiny() {
         setChoisingDest(!choisingDest)
+        dispatch(showModal())
         if (choisingDest === true) {
             dispatch(showNav())
+            dispatch(hideModal())
         }
     }
 
@@ -32,8 +34,8 @@ export default function MobNav() {
     }
 
     function handleLogout() {
-        // dispatch(logout())
-        // navigate("/")
+        dispatch(logout())
+        navigate("/")
     }
 
     return (

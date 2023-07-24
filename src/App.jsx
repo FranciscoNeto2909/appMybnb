@@ -12,7 +12,7 @@ import { hideMenu } from "./assets/appSlice";
 import PersonalInfos from "./components/personalInfos/PersonalInfos";
 import Profile from "./pages/profile/Profile";
 import LoginAndSecurity from "./components/loginAndSecurity/LoginAndSecurity";
-
+import { getAcomodations } from "./assets/housesSlice"
 export default function App() {
   const dispatch = useDispatch()
   const { isModalOpened, isFilterOpened, isLoginOpened } = useSelector(data => data.app)
@@ -30,6 +30,10 @@ export default function App() {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  useEffect(() => {
+    dispatch(getAcomodations())
+  }, [])
 
   return (
     <div className={`App ${isModalOpened && "hideScroll"}`} onClick={handleToggleMenu}>

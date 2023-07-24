@@ -28,11 +28,7 @@ a{
   padding: 8px 24px;
   gap: 30px 20px;
   justify-content: center;
-  align-items: center;
-}
-
-.card {
-  z-index: 1;
+  align-items: flex-start;
 }
 
 .font-small {

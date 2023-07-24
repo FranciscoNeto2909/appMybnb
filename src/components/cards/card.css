@@ -6,10 +6,21 @@
     border: none;
     z-index: 1;
     position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    visibility: hidden;
+}
+
+.card:hover .swiper-button-prev, .card:hover .swiper-button-next  {
+    visibility: visible;
 }
 
 .card-img {
-    max-width: 100%;
+    width: 300px;
     aspect-ratio: 1;
 }
 
@@ -19,31 +30,30 @@
     gap: 8px;
 }
 
-.card-favorite-btn{
+.card-favorite-btn {
     position: absolute;
     top: 10px;
     right: 10px;
     background: transparent;
     border: none;
-    color:#fff;
+    color: #fff;
     cursor: pointer;
 }
 
-.favorite{
+.favorite {
     color: #f00;
 }
 
-.card-data-title{
+.card-data-title {
     margin-top: 5px;
 }
 
-.card-data-desc{
-    font-size: 1.1rem;
+.card-data-desc {
+    font-size: .9rem;
     font-weight: 500;
     color: #888;
 }
 
-.card-data-price{
+.card-data-price {
     font-size: 16px;
 }
-
