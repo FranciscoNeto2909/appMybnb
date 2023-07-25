@@ -74,13 +74,13 @@ export default function Login() {
             <p className="login-desc">Faça login com sua conta para acessar seus dados no myBnb</p>
             <form className="login-form">
                 <div className="login-form-group input-group">
-                    <input id="email" type="email" placeholder=" " autoComplete="none" required className={`inpt ${errors.email && "inpt-error"}`} autoCapitalize="on" onChange={handleChangeEmail} value={user.email} />
+                    <input id="email-login" type="email" placeholder=" " autoComplete="none" required className={`inpt ${errors.email && "inpt-error"}`} autoCapitalize="on" onChange={handleChangeEmail} value={user.email} />
                     <label className={`lbl ${errors.email && "lbl-error"}`} htmlFor="email">Email</label>
                 </div>
                 {errors.email &&
                     <span className="lbl-error font-small">{user.email === "" ? "Este campo não pode ser vazio" : "Digite um email válido"}</span>}
                 <div className="login-form-group input-group">
-                    <input id="password" type="" required placeholder=" " className={`inpt ${errors.password && "inpt-error"}`} autoCapitalize="on" value={user.password} onChange={handleChangePassword} />
+                    <input id="password" type="password" required placeholder=" " className={`inpt ${errors.password && "inpt-error"}`} autoCapitalize="on" value={user.password} onChange={handleChangePassword} />
                     <label className={`lbl ${errors.password && "lbl-error"}`} htmlFor="">Senha</label>
                 </div>
                 {errors.password &&

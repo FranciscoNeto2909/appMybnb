@@ -3,7 +3,7 @@ import { AiOutlineSearch, AiOutlineHeart, AiOutlineMessage, AiOutlineUser } from
 import { BsSliders, BsAirplane } from "react-icons/bs"
 import { useDispatch, useSelector } from "react-redux"
 import { useLocation, Link } from "react-router-dom"
-import { hideModal, showFilter, showLogin, showModal, showNav } from "../../assets/appSlice"
+import { hideModal, showFilter, showLogin, showModal, showNav, hideNav } from "../../assets/appSlice"
 import MobSearchDestiny from "./destinyFilter/MobSearchDestiny"
 import HostTypesFilter from "../hostTypesFilter/HostTypesFilter"
 import "./mobileNav.css"
@@ -14,7 +14,7 @@ export default function MobNav() {
     const isLogged = useSelector(data => data.user.isLogged)
     const [choisingDest, setChoisingDest] = useState(false)
     const isNavVisible = useSelector(data => data.app.isNavVisible)
-
+    const isModalHide =  useSelector(data => data.app.isModalOpened)
     function handleOpenDestiny() {
         setChoisingDest(!choisingDest)
         dispatch(showModal())
@@ -29,6 +29,7 @@ export default function MobNav() {
     }
 
     function handleLogin() {
+        dispatch(hideNav())
         dispatch(showModal())
         dispatch(showLogin())
     }
@@ -56,7 +57,7 @@ export default function MobNav() {
                     {choisingDest && <MobSearchDestiny handleOpenDestiny={handleOpenDestiny} />}
                     <HostTypesFilter />
                 </div>}
-            <nav className={`mobNav ${isNavVisible ? "show-nav" : "hide-nav"}`}>
+            <nav className={`mobNav ${isNavVisible && !isModalHide ? "show-nav" : "hide-nav"}`}>
                 <ul className="mobNav-items-container">
                     <li>
                         <Link to="/" className="mobNav-item">

@@ -1,7 +1,7 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import { AiOutlineLeft } from "react-icons/ai"
-import { hideLogin, hideModal } from "../../assets/appSlice"
+import { hideLogin, hideModal, hideNav, showNav } from "../../assets/appSlice"
 import EmailAuth from "./emailAuth/EmailAuth"
 import "./register.css"
 import RegisterForm from "./registerForm/RegisterForm"
@@ -84,6 +84,7 @@ export default function Register() {
     }
 
     function handleCloseLogin(e) {
+        dispatch(showNav())
         if (e.target.classList[0] === "close") {
             navigate("/")
             dispatch(hideLogin())
@@ -96,7 +97,7 @@ export default function Register() {
             <div className="register">
                 <header className="register-header">
                     {step === 1 || step === 4 ?
-                        <button className="close register-header-closebtn" onClick={e => handleCloseLogin(e)}>X</button>
+                        <button className="close register-header-closebtn" onClick={handleCloseLogin}>X</button>
                         :
                         <button className="register-header-backbtn" onClick={handleBackStep} type="button">
                             <AiOutlineLeft size={18} />
@@ -110,7 +111,7 @@ export default function Register() {
                         <form className="register-form">
                             <div className={`register-form-container ${error && "inpt-error"}`}>
                                 <label className={`register-form-container-lbl ${error && "lbl-error"}`} htmlFor="phone">Email</label>
-                                <input id="email" type="Email" className="register-form-container-inpt" placeholder="Exemplo123@gmail.com" autoComplete="none" required onChange={handleChange} value={loginData.email} />
+                                <input id="email-register" type="email" className="register-form-container-inpt" placeholder="Exemplo123@gmail.com" autoComplete="none" required onChange={handleChange} value={loginData.email} />
                             </div>
                             {error && <span className="register-form-error">Digite um email válido!</span>}
                             <span className="register-form-notice">Certifique-se de inserir um endereço de email válido para receber o código de acesso.</span>
