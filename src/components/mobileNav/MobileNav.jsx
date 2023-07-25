@@ -56,7 +56,7 @@ export default function MobNav() {
                     {choisingDest && <MobSearchDestiny handleOpenDestiny={handleOpenDestiny} />}
                     <HostTypesFilter />
                 </div>}
-            {isNavVisible && <nav className="mobNav">
+            <nav className={`mobNav ${isNavVisible ? "show-nav" : "hide-nav"}`}>
                 <ul className="mobNav-items-container">
                     <li>
                         <Link to="/" className="mobNav-item">
@@ -99,7 +99,7 @@ export default function MobNav() {
                         </li>
                     }
                 </ul>
-            </nav>}
+            </nav>
         </>
     )
 }

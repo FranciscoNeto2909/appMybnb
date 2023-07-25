@@ -7,6 +7,17 @@
     z-index: 4;
     background-color: #fff;
     box-shadow: 0 -2px 4px #00000020;
+    transform-origin: bottom;
+}
+
+.hide-nav {
+    animation: hide ease-in-out 500ms normal;
+    animation-fill-mode: forwards;
+}
+
+.show-nav {
+    animation: show ease-in-out 500ms normal;
+    animation-fill-mode: forwards;
 }
 
 .mobNav-items-container {
@@ -111,4 +122,24 @@
     border-radius: 50%;
     border: 1px solid #DDDDDD;
     background-color: transparent;
+}
+
+@keyframes hide {
+    0% {
+        transform: scaleY(1);
+    }
+
+    100% {
+        transform: scaleY(0);
+    }
+}
+
+@keyframes show {
+    0% {
+        transform: scaleY(0);
+    }
+
+    100% {
+        transform: scaleY(1);
+    }
 }
