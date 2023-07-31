@@ -10,16 +10,22 @@
     overflow: hidden;
 }
 
+.card-skeleton {
+    min-height: 418px;
+}
+
 .swiper-button-prev,
 .swiper-button-next {
     visibility: hidden;
 }
 
-.card:hover .swiper-button-prev, .card:hover .swiper-button-next  {
+.card:hover .swiper-button-prev,
+.card:hover .swiper-button-next {
     visibility: visible;
 }
 
 .card-img {
+    height: 300px;
     width: 300px;
     aspect-ratio: 1;
 }

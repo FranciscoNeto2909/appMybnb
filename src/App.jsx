@@ -23,6 +23,7 @@ export default function App() {
   const navigate = useNavigate()
 
   const { isModalOpened, isFilterOpened, isLoginOpened } = useSelector(data => data.app)
+  
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   function handleToggleMenu(e) {

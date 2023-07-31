@@ -51,7 +51,7 @@ export default function RegisterForm({setStep, email}) {
             setTimeout(() => {
                 setErrors({ ...errors, password: false })
             }, 2500);
-        } else if (userData.confirmPass === "") {
+        } else if (userData.confirmPass === "") { 
             setErrors({ ...errors, confirmPass: true })
             setTimeout(() => {
                 setErrors({ ...errors, confirmPass: false })

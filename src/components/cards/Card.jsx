@@ -7,7 +7,6 @@ import ImgsSlider from '../imgsSlider/ImgsSlider';
 
 export default function Card({ house }) {
   const houseimgs = house.images.split(",")
-
   const [favorite, setFavorite] = useState(false)
 
   return (
@@ -18,14 +17,13 @@ export default function Card({ house }) {
           <AiOutlineHeart size={25} />}
       </button>
       <div>
-        {houseimgs.length > 0 ?
-          <ImgsSlider imgs={houseimgs} />
-          : <Skeleton height={300} />}
+        {houseimgs.length > 0 &&
+          <ImgsSlider imgs={houseimgs} />}
       </div>
       <div className="card-data">
-        <h2 className='card-data-title'>{house.title ? house.title : <Skeleton />}</h2>
-        <p className='card-data-desc'>{house.hostDesc ? house.hostDesc : <Skeleton />}</p>
-        <p className='card-data-price'>{house.price ? <span className='card-data-price--dark'> R${house.price}/noite </span> : <Skeleton />}</p>
+        <h2 className='card-data-title'>{house.title}</h2>
+        <p className='card-data-desc'>{house.hostDesc}</p>
+        <p className='card-data-price'>{<span className='card-data-price--dark'> R${house.price}/noite </span>}</p>
       </div>
     </div>
   )

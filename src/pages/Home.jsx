@@ -1,12 +1,17 @@
 import React, { useRef } from 'react';
 import Card from '../components/cards/Card';
 import { useDispatch, useSelector } from 'react-redux';
-import { hideNav, showNav } from "../assets/appSlice"
+import { hideNav, showNav } from "../assets/appSlice";
+import CardSkeleton from '../components/cards/cardSleketon';
+
 export default function Home() {
+  const skeletonArr = [1, 2, 3, 4, 5]
+
   const previousTouchRef = useRef({ y: 0, x: 0 })
   const acomodations = useSelector(data => data.house.acomodation)
   const dispatch = useDispatch()
-  
+
+
   const handleTouchMove = (event) => {
     const touch = event.touches[0]
     const deltaY = touch.clientY - previousTouchRef.current.y
@@ -26,9 +31,13 @@ export default function Home() {
 
   return (
     <div className="home" onTouchMove={handleTouchMove} onTouchStart={handleTouchStart}>
-      {acomodations.map((house, i) => (
+      {acomodations.length > 0 ? acomodations.map((house, i) => (
         <Card key={i} house={house} />
-      ))}
+      )) :
+        skeletonArr.map((sklt, i) => (
+          <CardSkeleton key={i} />
+        ))
+      }
     </div>
   );
 }

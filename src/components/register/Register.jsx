@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import { AiOutlineLeft } from "react-icons/ai"
-import { hideLogin, hideModal, hideNav, showNav } from "../../assets/appSlice"
+import { hideLogin, hideModal, showNav } from "../../assets/appSlice"
 import EmailAuth from "./emailAuth/EmailAuth"
 import "./register.css"
 import RegisterForm from "./registerForm/RegisterForm"
@@ -84,12 +84,20 @@ export default function Register() {
     }
 
     function handleCloseLogin(e) {
-        dispatch(showNav())
-        if (e.target.classList[0] === "close") {
+        const close = e.target.classList
+        if (close.contains("close")) {
+            dispatch(showNav())
             navigate("/")
             dispatch(hideLogin())
             dispatch(hideModal())
         }
+    }
+
+    function handlebtnClick() {
+        dispatch(showNav())
+        navigate("/")
+        dispatch(hideLogin())
+        dispatch(hideModal())
     }
 
     return (
@@ -97,7 +105,7 @@ export default function Register() {
             <div className="register">
                 <header className="register-header">
                     {step === 1 || step === 4 ?
-                        <button className="close register-header-closebtn" onClick={handleCloseLogin}>X</button>
+                        <button onClick={handlebtnClick} className="close register-header-closebtn">X</button>
                         :
                         <button className="register-header-backbtn" onClick={handleBackStep} type="button">
                             <AiOutlineLeft size={18} />
