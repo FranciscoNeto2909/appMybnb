@@ -2,7 +2,7 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import { Pagination, Navigation } from 'swiper/modules';
 import { serverUrl } from "../../assets/api";
 import { useEffect, useState } from "react";
-
+import "./imgSlider.css"
 
 export default function ImgsSlider({ imgs }) {
     const [navigation, setNavigation] = useState(false)
@@ -30,6 +30,7 @@ export default function ImgsSlider({ imgs }) {
             modules={[Pagination, Navigation]}
             navigation={navigation}
             loop={true}
+            style={{borderRadius:"25px", cursor:"pointer"}}
         >
             {imgs.map((img, i) => (
                 <SwiperSlide key={i}>

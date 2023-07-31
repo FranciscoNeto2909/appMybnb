@@ -16,7 +16,7 @@
     width: 100%;
     padding: 0 8px;
     display: flex;
-    gap: 8px;
+    gap: 16px;
     overflow-x: scroll;
 }
 
@@ -69,9 +69,9 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    gap: 8px;
-    padding: 12px;
-    color: #717171;
+    gap: 4px;
+    padding: 12px 0;
+    color: #747474;
     border-bottom: 2px solid transparent;
     opacity: 0.8;
 }
@@ -94,13 +94,13 @@
 }
 
 .hostTypes-hostType-img {
-    height: 25px;
-    width: 25px;
+    height: 24px;
+    width: 24px;
     opacity: inherit;
 }
 
 .hostTypes-hostType-title {
-    font-size: .7rem;
+    font-size: .82rem;
     white-space: nowrap;
 }
 
@@ -116,8 +116,12 @@
         border: none;
     }
 
+    .hostTypes{
+        gap: 15px;
+    }
+
     .hostTypes-hostType {
-        padding: 4px 12px;
+        padding: 5px 0;
     }
 
     .hostTypes-hostType:hover {

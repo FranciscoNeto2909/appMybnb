@@ -14,6 +14,7 @@ import Profile from "./pages/profile/Profile";
 import LoginAndSecurity from "./components/loginAndSecurity/LoginAndSecurity";
 import { getAcomodations } from "./assets/housesSlice"
 import { getUser } from "./assets/userSlice"
+import Favorites from "./pages/favorites/Favorites";
 
 
 export default function App() {
@@ -64,11 +65,12 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/account" element={<Account windowWidth={windowWidth} />} />
+        <Route path="/account/personal-infos" element={<PersonalInfos />} />
         <Route path="/account/login-and-security" element={<LoginAndSecurity windowWidth={windowWidth} />} />
+        <Route path="/favorites" element={<Favorites />} />
         <Route path="/profile" element={<Profile windowWidth={windowWidth} />} />
         <Route path="/host" element={<Host />} />
         <Route path="/login" element={<Register />} />
-        <Route path="/account/personal-infos" element={<PersonalInfos />} />
       </Routes>
     </div>
   );

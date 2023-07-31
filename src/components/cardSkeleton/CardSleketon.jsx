@@ -3,7 +3,7 @@ import "react-loading-skeleton/dist/skeleton.css"
 
 export default function CardSkeleton() {
     return (
-        <div className="card" style={{minHeight:"418px", width:"300px"}}>
+        <div className="card" style={{minHeight:"418px", width:"100%"}}>
             <div>
                 <Skeleton height={300}/>
             </div>

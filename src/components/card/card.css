@@ -1,7 +1,8 @@
 .card {
     display: flex;
     flex-direction: column;
-    width: 300px;
+    width: 100%;
+    max-width: 300px;
     background-color: transparent;
     border: none;
     z-index: 1;
@@ -25,8 +26,8 @@
 }
 
 .card-img {
-    height: 300px;
-    width: 300px;
+    height: 320px;
+    width: 100%;
     aspect-ratio: 1;
 }
 
@@ -62,4 +63,10 @@
 
 .card-data-price {
     font-size: 16px;
+}
+
+@media (max-width:400px) {
+    .card {
+        max-width: 100%;
+    }
 }
