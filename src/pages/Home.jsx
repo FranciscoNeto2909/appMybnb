@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
-import Card from '../components/cards/Card';
+import Card from '../components/card/Card';
 import { useDispatch, useSelector } from 'react-redux';
 import { hideNav, showNav } from "../assets/appSlice";
-import CardSkeleton from '../components/cards/cardSleketon';
+import CardSkeleton from '../components/cardSkeleton/CardSleketon';
 
 export default function Home() {
   const skeletonArr = [1, 2, 3, 4, 5]
