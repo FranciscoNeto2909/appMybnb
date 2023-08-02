@@ -1,5 +1,5 @@
 .favModal-container {
-    position:fixed;
+    position: fixed;
     height: 100vh;
     width: 100vw;
     top: 0;
@@ -62,7 +62,7 @@
     gap: 10px;
     justify-content: flex-start;
     flex-wrap: wrap;
-    padding: 16px;
+    padding: 22px 16px;
 }
 
 .favModal-categorie {
@@ -107,7 +107,7 @@
 }
 
 .newCategorie {
-    padding: 16px;
+    padding: 0 16px 24px;
     margin: 18px 0;
     display: flex;
     border-bottom: 1px solid #ddd;
@@ -128,7 +128,7 @@
 
 .newCategorie-btns {
     width: 100%;
-    padding: 14px 20px;
+    padding: 0 20px 12px;
     display: flex;
     gap: 12px;
     justify-content: space-between;
@@ -153,7 +153,6 @@
 @media (max-width: 500px) {
     .favModal-container {
         display: flex;
-        align-items: flex-end;
         z-index: 10;
     }
 
@@ -163,6 +162,8 @@
     }
 
     .favModal {
+        position: fixed;
+        bottom: -1px;
         border-radius: 16px 16px 0 0;
         max-height: 45%;
         width: 100%;
