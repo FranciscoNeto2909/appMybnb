@@ -155,7 +155,8 @@
     }
 
     .favModal-categories {
-        height: 250px;
+        height: auto;
+        flex-grow: 1;
     }
 
     .favModal {
