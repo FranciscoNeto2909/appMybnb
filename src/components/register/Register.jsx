@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import { AiOutlineLeft } from "react-icons/ai"
-import { hideLogin, hideModal, showNav } from "../../assets/appSlice"
+import { hideLogin, hideModal, hideNav, showNav } from "../../assets/appSlice"
 import EmailAuth from "./emailAuth/EmailAuth"
 import "./register.css"
 import RegisterForm from "./registerForm/RegisterForm"
@@ -94,11 +94,15 @@ export default function Register() {
     }
 
     function handlebtnClick() {
-        dispatch(showNav())
         navigate("/")
+        dispatch(showNav())
         dispatch(hideLogin())
         dispatch(hideModal())
     }
+
+    useEffect(() => {
+        dispatch(hideNav())
+    },[])
 
     return (
         <div className="close register-container" onClick={handleCloseLogin}>

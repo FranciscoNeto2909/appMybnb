@@ -163,7 +163,7 @@ export default function DesktopNav() {
                                 <ul className="menu-items border-line font-dark">
                                     <li className="menu-item">Mensagens</li>
                                     <li className="menu-item">Viagens</li>
-                                    <li className="menu-item">Favoritos</li>
+                                    <li className="menu-item" onClick={() => navigate("/favorites")}>Favoritos</li>
                                 </ul>
                                 <ul className="menu-items border-line">
                                     <li className="menu-item">Editar anuncio</li>

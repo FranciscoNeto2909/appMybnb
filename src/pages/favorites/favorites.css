@@ -1,3 +1,88 @@
-.favorites{
-    padding: 10px 16px;
+.favorites {
+    height: 100vh;
+    width: 100vw;
+    padding: 16px 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+.favorites-header {
+    height: 60px;
+}
+
+.favorites-login-desc {
+    opacity: 0.8;
+    font-size: 15px;
+    margin: 8px 0;
+}
+
+.favorites-login-btn {
+    margin-top: 16px;
+    padding: 12px 20px;
+    font-size: 16px;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    background: linear-gradient(to right, #e61e4d 27.5%, #e31c5f 40%, #d70466 57.5%, #bd1e59 75%, #bd1e59 100%);
+}
+
+.favorites-categories {
+    display: flex;
+}
+
+.favorites-categorie {
+    height: 200px;
+    width: 200px;
+    position: relative;
+    cursor: pointer;
+}
+
+.favorites-categorie-img {
+    height: 200px;
+    width: 200px;
+    border: 4px solid #fff;
+    border-radius: 16px;
+    box-shadow: 0 0 4px #0000002c;
+}
+
+.favorites-categories-btn {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    font-size: 22px;
+    line-height: 20px;
+    padding: 0 8px 6px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: none;
+    box-shadow: 0 0 4px #ffffff5d;
+    cursor: pointer;
+}
+
+.favorites-categorie-title {
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.favorites-categorie-saved {
+    color: #777;
+}
+
+@media (max-width:500px) {
+    .favorites-categories {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .favorites-categorie {
+        width: 50%;
+        position: relative;
+    }
+
+    .favorites-categorie-img {
+        width: 100%;
+        height: 170px;
+    }
 }

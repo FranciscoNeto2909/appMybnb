@@ -31,9 +31,9 @@ export default function FavoritesForm() {
     function handleAddToFavorite(id) {
         const hasAdded = favorites.map(item => item.items.filter(elem => elem.id === clickedCard.id))
         if (hasAdded.some(item => item.length > 0)) {
-            console.log("ja adicionado")
+            alert("ja foi adicionado")
         } else {
-            console.log("adicionado com sucesso")
+            alert("adicionado com sucesso")
             dispatch(setFavorite({ id, item: clickedCard }))
             handleCloseModal()
         }
@@ -42,9 +42,9 @@ export default function FavoritesForm() {
     function handleCreateNewCategorie() {
         const hasCategorie = favorites.filter(item => item.title.toLowerCase() === newFavText.toLowerCase())
         if (newFavText === "") {
-            console.log("Escreva algo")
+            alert("Escreva algo")
         } else if (hasCategorie.length > 0) {
-            console.log("Ja existente")
+            alert("Ja existente")
         } else {
             dispatch(createCategorie({ title: newFavText, items: [clickedCard] }))
             setNewFav(false)
@@ -59,7 +59,6 @@ export default function FavoritesForm() {
 
     useEffect(() => {
         handleOpenModal()
-        console.log(favorites)
     }, [])
 
     return (
