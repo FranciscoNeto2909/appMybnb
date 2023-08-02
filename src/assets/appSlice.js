@@ -8,19 +8,25 @@ const slice = createSlice({
         isFilterOpened: false,
         isLoginOpened: false,
         isMenuOpened: false,
+        isFavoritesOpened: false,
+        clickedCard: {},
+        favorites: [{
+            title: "gostei",
+            items: []
+        }],
         destinyFilter: {
             localization: "",
             date: "",
             hosts: 0,
             cordenates: "",
-            price:"",
-            hostPlace:"",
-            bedroomsQuant:"",
-            bedsQuant:"",
-            bethroomsQuant:"",
-            hostSpace:"",
-            preferences:""
-          }
+            price: "",
+            hostPlace: "",
+            bedroomsQuant: "",
+            bedsQuant: "",
+            bethroomsQuant: "",
+            hostSpace: "",
+            preferences: ""
+        }
     },
     reducers: {
         showNav: (state) => {
@@ -34,6 +40,36 @@ const slice = createSlice({
         },
         hideModal: (state) => {
             return { ...state, isModalOpened: false }
+        },
+        setClickedCard(state, { payload }) {
+            return { ...state, clickedCard: payload }
+        },
+        cleanClickedCard(state) {
+            return { ...state, clickedCard: {} }
+        },
+        showFavorites: (state) => {
+            return { ...state, isFavoritesOpened: true }
+        },
+        hideFavorites: (state) => {
+            return { ...state, isFavoritesOpened: false }
+        },
+        setFavorite(state, { payload }) {
+            const { id, item } = payload
+            return {
+                ...state,
+                favorites: [
+                    {
+                        ...state.favorites[id],
+                        items: [...state.favorites[id].items, item],
+                    },
+                ],
+            };
+        },
+        createCategorie(state, { payload }) {
+            return {
+                ...state,
+                favorites: [...state.favorites, payload],
+            };
         },
         showFilter: (state) => {
             return { ...state, isFilterOpened: true }
@@ -55,18 +91,18 @@ const slice = createSlice({
         },
         setDestiny(state) {
             return { ...state, hasDestiny: true }
-          },
-          clearDestiny(state) {
+        },
+        clearDestiny(state) {
             return { ...state, hasDestiny: false }
-          },
-          setDestinyFilter(state, {payload}){
+        },
+        setDestinyFilter(state, { payload }) {
             console.log(payload)
-            return {...state, destinyFilter:{...state.destinyFilter, payload}}
-          }
+            return { ...state, destinyFilter: { ...state.destinyFilter, payload } }
+        }
     },
     extraReducers: (builder) => { }
 })
 
-export const { hideNav, showNav, showModal, hideModal, showFilter, hideFilter, showLogin,hideLogin, showMenu, hideMenu, setDestiny, clearDestiny, setDestinyFilter } = slice.actions
+export const { hideNav, showNav, showModal, hideModal, showFavorites, hideFavorites, setClickedCard, cleanClickedCard, setFavorite, createCategorie, showFilter, hideFilter, showLogin, hideLogin, showMenu, hideMenu, setDestiny, clearDestiny, setDestinyFilter } = slice.actions
 
 export default slice.reducer

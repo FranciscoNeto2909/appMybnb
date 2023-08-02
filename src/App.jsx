@@ -15,6 +15,7 @@ import LoginAndSecurity from "./components/loginAndSecurity/LoginAndSecurity";
 import { getAcomodations } from "./assets/housesSlice"
 import { getUser } from "./assets/userSlice"
 import Favorites from "./pages/favorites/Favorites";
+import FavoritesModal from "./components/favoritesModal/FavoritesModal";
 
 
 export default function App() {
@@ -22,9 +23,10 @@ export default function App() {
   const id = localStorage.getItem('userId')
   const dispatch = useDispatch()
   const navigate = useNavigate()
-
-  const { isModalOpened, isFilterOpened, isLoginOpened } = useSelector(data => data.app)
   
+  const favorites = useSelector(data => data.app.isFavoritesOpened)
+  const { isModalOpened, isFilterOpened, isLoginOpened } = useSelector(data => data.app)
+
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   function handleToggleMenu(e) {
@@ -62,6 +64,7 @@ export default function App() {
       }
       {isFilterOpened && <HostFilter />}
       {isLoginOpened && <Register />}
+      {favorites && <FavoritesModal />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/account" element={<Account windowWidth={windowWidth} />} />

@@ -26,7 +26,7 @@
 .lbl {
     position: absolute;
     left: 8px;
-    top: 22px;
+    top: 20px;
     transition: 0.7s;
     opacity: 0.6;
 }

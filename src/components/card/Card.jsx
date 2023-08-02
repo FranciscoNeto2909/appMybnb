@@ -1,17 +1,29 @@
 import React, { useState } from 'react';
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai"
-import Skeleton from 'react-loading-skeleton';
+import { useDispatch, useSelector } from "react-redux";
 import "./card.css"
 import "react-loading-skeleton/dist/skeleton.css"
 import ImgsSlider from '../imgsSlider/ImgsSlider';
+import { setClickedCard, showFavorites } from '../../assets/appSlice';
 
 export default function Card({ house }) {
   const houseimgs = house.images.split(",")
   const [favorite, setFavorite] = useState(false)
+  const dispatch = useDispatch()
+
+  function handleOpenFavoritesForm() {
+    if (!favorite) {
+      setFavorite(!favorite)
+      dispatch(showFavorites())
+      dispatch(setClickedCard(house))
+    } else {
+      setFavorite(!favorite)
+    }
+  }
 
   return (
     <div className="card">
-      <button className='card-favorite-btn' type='button' onClick={() => setFavorite(!favorite)}>
+      <button className='card-favorite-btn' type='button' onClick={handleOpenFavoritesForm}>
         {favorite ?
           <AiFillHeart size={25} className="favorite" /> :
           <AiOutlineHeart size={25} />}

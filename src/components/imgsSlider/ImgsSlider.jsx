@@ -30,7 +30,7 @@ export default function ImgsSlider({ imgs }) {
             modules={[Pagination, Navigation]}
             navigation={navigation}
             loop={true}
-            style={{borderRadius:"25px", cursor:"pointer"}}
+            style={{borderRadius:"16px", cursor:"pointer"}}
         >
             {imgs.map((img, i) => (
                 <SwiperSlide key={i}>

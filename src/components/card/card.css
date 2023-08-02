@@ -39,12 +39,13 @@
 
 .card-favorite-btn {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 16px;
+    right: 16px;
     background: transparent;
     border: none;
     color: #fff;
     cursor: pointer;
+    z-index: 10;
 }
 
 .favorite {
