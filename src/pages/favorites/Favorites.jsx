@@ -13,7 +13,7 @@ export default function Favorites() {
                 <h1 className="favorites-title">favorites</h1>
             </div>
             <section className="favorites-body">
-                {islogged ?
+                {/* {islogged ?
                     <div className="favorites-categories">
                         {favorites?.map((item, i) => (
                             <div className="favorites-categorie" key={i}>
@@ -23,12 +23,12 @@ export default function Favorites() {
                                 <p className="favorites-categorie-saved">{item.items.length} saved</p>
                             </div>
                         ))}
-                    </div> :
+                    </div> : */}
                     <div className="favorites-login">
                         <h2>Login to your account to view your favorites</h2>
                         <p className="favorites-login-desc">Você pode criar, visualizar ou editar listas de favoritos depois de fazer o login.</p>
                         <button className="favorites-login-btn" onClick={() => { navigate("/login") }}>Login</button>
-                    </div>}
+                    </div>
             </section>
         </div>
     )
