@@ -23,7 +23,7 @@ export default function App() {
   const id = localStorage.getItem('userId')
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  
+
   const favorites = useSelector(data => data.app.isFavoritesOpened)
   const { isModalOpened, isFilterOpened, isLoginOpened } = useSelector(data => data.app)
 
@@ -54,7 +54,7 @@ export default function App() {
   }, [])
 
   return (
-    <div className={`App ${isModalOpened && "hideScroll"}`} onClick={handleToggleMenu}>
+    <div className={`App ${isModalOpened && "hideScroll"}`} onClick={windowWidth >= 750 ? handleToggleMenu : () => {}}>
 
       {windowWidth <= 750 &&
         <MobileNav />

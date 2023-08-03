@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux"
-import "./favorites.css"
-import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
+import "./favorites.css"
+
 export default function Favorites() {
     const navigate = useNavigate()
     const islogged = useSelector(data => data.user.isLogged)
@@ -20,7 +20,7 @@ export default function Favorites() {
                                         <button className="favorites-categories-btn">x</button>
                                         <img className="favorites-categorie-img" src="https://cdn.leroymerlin.com.br/products/papel_de_parede_praia_paisagem_coqueiro_natureza_sala_painel_1567477501_4380_600x600.jpg" alt="" />
                                         <p className="favorites-categorie-title">{item.title}</p>
-                                        <p className="favorites-categorie-saved">{item.items.length} saved(s)</p>
+                                        <p className="favorites-categorie-saved">{item.items.length} saved</p>
                                     </div>
                                 ))}
                     </div> :
