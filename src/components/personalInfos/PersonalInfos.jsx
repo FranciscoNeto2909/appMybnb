@@ -1,20 +1,21 @@
 import { useState, useEffect } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { Link, useNavigate } from "react-router-dom"
 import { showNav } from "../../assets/appSlice"
 import { AiOutlineLeft } from "react-icons/ai"
 import { mask } from "remask"
 import "./personalInfos.css"
+import { getUser, updateUser } from "../../assets/userSlice"
+import { parseISO, format } from 'date-fns';
+import { ptBR } from "date-fns/locale"
 
 export default function PersonalInfos() {
     const data = new Date()
     const year = data.getFullYear()
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
+    const user = useSelector(data => data.user.user)
     const navigate = useNavigate()
-    const user = {
-        name: "User"
-    }
+
     const emailRegex = new RegExp("^[_a-z0-9-]+([_a-z0-9-]+)*@[a-z0-9-]+([a-z0-9-]+).([a-z]{2,3})$")
 
     const dispatch = useDispatch()
@@ -60,7 +61,7 @@ export default function PersonalInfos() {
         setUserData({ ...userData, phone: mask(`${e.target.value}`, ['(99) 99999-9999']) })
     }
 
-    function handleValidadeBirthDate() {
+    async function handleValidadeBirthDate() {
         if (userData.birthDate === "" || Number(year) - Number(userData.birthDate.slice(0, 4)) < 18) {
             setErrors({ ...errors, birthDateError: true })
             setTimeout(() => {
@@ -100,22 +101,37 @@ export default function PersonalInfos() {
         setPhoneVisb(false)
         setSexoVisb(false)
 
-        // dispatch(updateUser({
-        //     name: `${userData.name} ${userData.lastName}`,
-        //     image: "",
-        //     email: userData.email,
-        //     phone: userData.phone,
-        //     birthDate: userData.birthDate,
-        //     sex: userData.sex,
-        //     address: userData.address,
-        //     oldPassword: "",
-        //     newPassword: ""
-        // }))
+        const dataObj = parseISO(userData.birthDate);
+        const formatedDate = format(dataObj, 'dd/MM/yyyy', { locale: ptBR });
+
+        dispatch(updateUser({
+            name: `${userData.name} ${userData.lastName}`,
+            image: "",
+            email: userData.email,
+            phone: userData.phone,
+            birthDate: formatedDate,
+            sex: userData.sex,
+            address: userData.address,
+            oldPassword: "",
+            newPassword: ""
+        }))
     }
 
     function handleGetNewUserdata() {
-        // const userId = localStorage.getItem("userId")
-        // dispatch(getUser(userId))
+        setUserData({
+            name: "",
+            email: "",
+            image: "",
+            lastName: "",
+            sex: "",
+            phone: "",
+            password: "",
+            confirmPass: "",
+            birthDate: "",
+            address: ""
+        })
+        const userId = localStorage.getItem("userId")
+        dispatch(getUser(userId))
     }
 
     useEffect(() => {
@@ -141,7 +157,7 @@ export default function PersonalInfos() {
                 }
                 <h1 className="pinfo-title">Informações pessoais</h1>
                 <div className="pinfo-container">
-                    <h2 className="pinfo-container-title">Nome</h2>
+                    <h2 className="pinfo-container-title">Name</h2>
                     {nameVisib ?
                         <p className="pinfo-container-desc">Este é o nome que aparecerá em seus documentos de viagem.</p> :
                         <p className="pinfo-container-user">{user.name}</p>
@@ -191,7 +207,7 @@ export default function PersonalInfos() {
                                 <input type="date" className={errors.birthDateError ? "inpt--date inpt inpt-error lbl-error" : "inpt inpt--date"} value={userData.birthDate} onChange={handleChangeBirthdate} />
                             </div>
                             {errors.birthDateError && <p className="lbl-error">Você deve ter mais de 18 anos!</p>}
-                            <button className="pinfo-btn-save" onClick={handleValidadeBirthDate}>Salvar</button>
+                            <button type="button" className="pinfo-btn-save" onClick={handleValidadeBirthDate}>Salvar</button>
                         </form>
                     }
                     <button className="pinfo-btn-edit" onClick={() => setBirthVisb(!birthVisib)}>{birthVisib ? "Cancelar" : "Editar"}</button>
@@ -261,7 +277,7 @@ export default function PersonalInfos() {
                         </form>}
                     <button className="pinfo-btn-edit" onClick={() => setPhoneVisb(!phoneVisib)}>{phoneVisib ? "Cancelar" : "Editar"}</button>
                 </div>
-                <div className="pinfo-container" style={{border:"none"}}>
+                <div className="pinfo-container" style={{ border: "none" }}>
                     <h2 className="pinfo-container-title">Endereço</h2>
                     {!addrVisib ?
                         <p className="pinfo-container-desc">{user.address ? user.address : "Não fornecido"}</p> :

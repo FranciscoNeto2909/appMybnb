@@ -14,7 +14,7 @@ import Profile from "./pages/profile/Profile";
 import LoginAndSecurity from "./components/loginAndSecurity/LoginAndSecurity";
 import { getAcomodations } from "./assets/housesSlice"
 import { getUser } from "./assets/userSlice"
-import Favorites from "./pages/Favorites";
+import Favorites from "./pages/favorites/Favorites";
 import FavoritesModal from "./components/favoritesModal/FavoritesModal";
 
 
@@ -24,7 +24,7 @@ export default function App() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const favorites = useSelector(data => data.app.isFavoritesOpened)
+  const isFavoritesOpened = useSelector(data => data.app.isFavoritesOpened)
   const { isModalOpened, isFilterOpened, isLoginOpened } = useSelector(data => data.app)
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -64,7 +64,7 @@ export default function App() {
       }
       {isFilterOpened && <HostFilter />}
       {isLoginOpened && <Register />}
-      {favorites && <FavoritesModal />}
+      {isFavoritesOpened && <FavoritesModal />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/account" element={<Account windowWidth={windowWidth} />} />

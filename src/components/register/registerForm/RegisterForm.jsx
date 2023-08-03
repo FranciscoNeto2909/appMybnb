@@ -4,8 +4,10 @@ import { useDispatch } from "react-redux"
 import { mask } from "remask"
 import { hash } from "bcryptjs"
 import "./registerForm.css"
+import { ptBR } from "date-fns/locale"
+import { format, parseISO } from "date-fns"
 
-export default function RegisterForm({setStep, email}) {
+export default function RegisterForm({ setStep, email }) {
     const data = new Date()
     const year = data.getFullYear()
     const dispatch = useDispatch()
@@ -51,7 +53,7 @@ export default function RegisterForm({setStep, email}) {
             setTimeout(() => {
                 setErrors({ ...errors, password: false })
             }, 2500);
-        } else if (userData.confirmPass === "") { 
+        } else if (userData.confirmPass === "") {
             setErrors({ ...errors, confirmPass: true })
             setTimeout(() => {
                 setErrors({ ...errors, confirmPass: false })
@@ -75,13 +77,16 @@ export default function RegisterForm({setStep, email}) {
         else {
             const hashedPassword = await hash(userData.password, 8)
             
+            const dataObj = parseISO(userData.birthDate);
+            const formatedDate = format(dataObj, 'dd/MM/yyyy', { locale: ptBR });
+
             await dispatch(createUser({
                 name: `${userData.name} ${userData.lastName}`,
                 phone: userData.phone,
                 email: email,
                 password: hashedPassword,
-                birthDate: userData.birthDate
-            })).then(() =>  setStep(4))
+                birthDate: formatedDate
+            })).then(() => setStep(4))
         }
     }
 

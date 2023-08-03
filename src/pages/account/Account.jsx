@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { Link, useNavigate } from "react-router-dom"
 import { hideMenu } from "../../assets/appSlice"
 import { AiOutlineSolution, AiOutlineSafety, AiOutlineCreditCard, AiOutlineFile, AiOutlineNotification, AiOutlineEye, AiOutlineControl, AiOutlineGift, AiOutlineCar, AiOutlineLeft, AiOutlineRight } from "react-icons/ai"
@@ -8,7 +8,7 @@ import "./account.css"
 export default function Account({ windowWidth }) {
     const dispatch = useDispatch()
     const navigate = useNavigate()
-
+    const user = useSelector(data => data.user.user)
     useEffect(() => {
         dispatch(hideMenu())
     }, [dispatch])
@@ -23,10 +23,10 @@ export default function Account({ windowWidth }) {
                     <h1 className="account-title">Conta</h1>
                     {windowWidth > 500 &&
                         <>
-                            <span className="account-user-name">User name</span>
-                            <span className="account-user-email">User email</span>
+                            <span className="account-user-name">{user.name}</span>
+                            <span className="account-user-email">{user.email}</span>
                             <span className="account-user-profile">
-                                <Link to="/profile">Acessar perfil</Link>
+                                <Link to="/account/personal-infos">Acessar perfil</Link>
                             </span>
                         </>
                     }

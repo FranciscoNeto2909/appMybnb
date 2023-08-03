@@ -14,7 +14,8 @@
 }
 
 .account-user-name, .account-user-email, .account-user-profile{
-    font-size: 18px;
+    font-size: 16px;
+    margin:0 4px 0 0;
 }
 
 .account-options{

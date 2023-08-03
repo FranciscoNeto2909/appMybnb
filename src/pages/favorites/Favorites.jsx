@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import "./pages.css"
+import "./favorites.css"
 
 export default function Favorites() {
     const navigate = useNavigate()
