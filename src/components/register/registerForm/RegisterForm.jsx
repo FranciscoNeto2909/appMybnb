@@ -4,8 +4,6 @@ import { useDispatch } from "react-redux"
 import { mask } from "remask"
 import { hash } from "bcryptjs"
 import "./registerForm.css"
-import { ptBR } from "date-fns/locale"
-import { format, parseISO } from "date-fns"
 
 export default function RegisterForm({ setStep, email }) {
     const data = new Date()
@@ -76,9 +74,8 @@ export default function RegisterForm({ setStep, email }) {
         }
         else {
             const hashedPassword = await hash(userData.password, 8)
-            
-            const dataObj = parseISO(userData.birthDate);
-            const formatedDate = format(dataObj, 'dd/MM/yyyy', { locale: ptBR });
+            const partesData = userData.birthDate.split("-");
+            const formatedDate = partesData[2] + "/" + partesData[1] + "/" + partesData[0];
 
             await dispatch(createUser({
                 name: `${userData.name} ${userData.lastName}`,

@@ -101,8 +101,8 @@ export default function PersonalInfos() {
         setPhoneVisb(false)
         setSexoVisb(false)
 
-        const dataObj = parseISO(userData.birthDate);
-        const formatedDate = format(dataObj, 'dd/MM/yyyy', { locale: ptBR });
+        let partesData = userData.birthDate.split("-");
+            const formatedDate = partesData[2] + "/" + partesData[1] + "/" + partesData[0];
 
         dispatch(updateUser({
             name: `${userData.name} ${userData.lastName}`,
