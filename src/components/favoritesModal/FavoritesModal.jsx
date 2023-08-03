@@ -31,7 +31,7 @@ export default function FavoritesForm() {
     function handleAddToFavorite(id) {
         const hasAdded = favorites.map(item => item.items.filter(elem => elem.id === clickedCard.id))
         if (hasAdded.some(item => item.length > 0)) {
-            alert("ja foi adicionado")
+            alert("Já foi adicionado")
         } else {
             alert("adicionado com sucesso")
             dispatch(setFavorite({ id, item: clickedCard }))
@@ -42,9 +42,9 @@ export default function FavoritesForm() {
     function handleCreateNewCategorie() {
         const hasCategorie = favorites.filter(item => item.title.toLowerCase() === newFavText.toLowerCase())
         if (newFavText === "") {
-            alert("Escreva algo")
+            alert("Este campo não pode ser vazio")
         } else if (hasCategorie.length > 0) {
-            alert("Ja existente")
+            alert("Já existente")
         } else {
             dispatch(createCategorie({ title: newFavText, items: [clickedCard] }))
             setNewFav(false)
