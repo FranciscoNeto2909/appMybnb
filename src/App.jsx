@@ -14,7 +14,7 @@ import Profile from "./pages/profile/Profile";
 import LoginAndSecurity from "./components/loginAndSecurity/LoginAndSecurity";
 import { getAcomodations } from "./assets/housesSlice"
 import { getUser } from "./assets/userSlice"
-import Favorites from "./pages/favorites/Favorites";
+import Favorites from "./pages/Favorites";
 import FavoritesModal from "./components/favoritesModal/FavoritesModal";
 
 
