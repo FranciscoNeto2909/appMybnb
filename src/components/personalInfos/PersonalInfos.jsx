@@ -102,14 +102,14 @@ export default function PersonalInfos() {
         setSexoVisb(false)
 
         let partesData = userData.birthDate.split("-");
-            const formatedDate = partesData[2] + "/" + partesData[1] + "/" + partesData[0];
+        const formatedDate = partesData[2] + "/" + partesData[1] + "/" + partesData[0];
 
         dispatch(updateUser({
             name: `${userData.name} ${userData.lastName}`,
             image: "",
             email: userData.email,
             phone: userData.phone,
-            birthDate: formatedDate,
+            birthDate: formatedDate.includes("undefined") ? user.birthDate : formatedDate,
             sex: userData.sex,
             address: userData.address,
             oldPassword: "",
@@ -118,18 +118,6 @@ export default function PersonalInfos() {
     }
 
     function handleGetNewUserdata() {
-        setUserData({
-            name: "",
-            email: "",
-            image: "",
-            lastName: "",
-            sex: "",
-            phone: "",
-            password: "",
-            confirmPass: "",
-            birthDate: "",
-            address: ""
-        })
         const userId = localStorage.getItem("userId")
         dispatch(getUser(userId))
     }
