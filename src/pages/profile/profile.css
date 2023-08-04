@@ -55,6 +55,20 @@
     width: 50px;
 }
 
+.profile-profile-container{
+    position: relative;
+}
+
+.profile-profile-cam{
+    position: absolute;
+    bottom: 8px;
+    left: 11px;
+}
+
+.profile-inpt{
+    display: none;
+}
+
 .profile-option{
     padding: 16px 0;
     display: flex;

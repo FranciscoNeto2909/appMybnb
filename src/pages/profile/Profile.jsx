@@ -1,14 +1,17 @@
-import React, { useEffect } from "react"
-import { AiOutlineRight, AiOutlineSolution, AiOutlineSetting, AiOutlineHome, AiOutlineControl, AiOutlineBuild, AiOutlineGift, AiOutlineQuestion, AiOutlineGlobal } from "react-icons/ai"
+import React, { useEffect, useState } from "react"
+import { AiOutlineRight, AiOutlineSolution, AiOutlineSetting, AiOutlineHome, AiOutlineControl, AiOutlineBuild, AiOutlineGift, AiOutlineQuestion, AiOutlineGlobal, AiOutlineCamera } from "react-icons/ai"
 import { Link, useNavigate } from "react-router-dom"
 import "./profile.css"
 import { useDispatch, useSelector } from "react-redux"
-import { logout } from "../../assets/userSlice"
+import { getUser, logout, setUserImage } from "../../assets/userSlice"
+import { serverUrl } from "../../assets/api"
+
 export default function Profile({ windowWidth }) {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const userAcomodations = [1, 2]
-    const user = useSelector(data => data.user.user)
+    const [image, setImage] = useState("")
+    const user = useSelector(data => data.user)
     const userImg = "https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png"
 
     function handleLogout() {
@@ -17,18 +20,44 @@ export default function Profile({ windowWidth }) {
         navigate("/")
     }
 
+    function handleGetUserImage() {
+        setImage(`${serverUrl}profile/${user.user.image}`)
+    }
+
+    async function handleChangeUserImage(e) {
+        const userId = localStorage.getItem('userId')
+        const img = await e.target.files[0]
+        dispatch(setUserImage(img)).then(e => {
+            dispatch(getUser(userId))
+            setImage(`${serverUrl}profile/${user.user.image}`)
+        })
+    }
+
+
     useEffect(() => {
         if (windowWidth > 500) {
             navigate("/account")
         }
     }, [windowWidth])
 
+    useEffect(() => {
+        if (user.user.image) {
+            handleGetUserImage()
+        }
+    }, [user])
+
     return (
         <div className="profile">
             <section className="profile-divisor">
                 <h1 className="profile-user-title">Profile</h1>
                 <div className="profile-profile">
-                    <img src={userImg} className="profile-profile-img" alt="" />
+                    <div>
+                        <label htmlFor="img" className="profile-profile-container">
+                            <img src={image ? image : userImg} className="profile-profile-img" alt="" />
+                            <AiOutlineCamera size={18} className="profile-profile-cam" />
+                            <input type="file" id="img" className="profile-inpt" accept="image/*" alt="user profile" onChange={e => handleChangeUserImage(e)} />
+                        </label>
+                    </div>
                     <div className="profile-profile-texts">
                         <span className="profile-profile-texts-title">{user.name}</span>
                         <span className="profile-profile-texts-desc">Mostrar perfil</span>
@@ -41,7 +70,7 @@ export default function Profile({ windowWidth }) {
                     <AiOutlineRight size={18} className="profile-arowLeft" />
                 </Link>
                 <Link to="/account" className="profile-option">
-                    <AiOutlineSetting sie={24} />
+                    <AiOutlineSetting size={24} />
                     <span className="profile-option-text">Conta</span>
                     <AiOutlineRight size={18} className="profile-arowLeft" />
                 </Link>

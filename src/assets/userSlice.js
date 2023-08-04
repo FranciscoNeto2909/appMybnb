@@ -57,12 +57,17 @@ export const setUserImage = createAsyncThunk("setUserImage", async userImage => 
   formData.append('image', userImage)
 
   const headers = {
-    'headers': { 'Content-Type': 'application/json' }
+    'Content-Type': 'multipart/form-data'
   }
 
-  await api.put(`users/image/${userId}`, formData, headers)
-    .then(res => console.log(res.data))
-    .catch(err => console.log(err))
+  try {
+    const res = await api.put(`users/image/${userId}`, formData, headers)
+    console.log(res.data)
+    return res.data
+  } catch (err) {
+    console.log(err)
+    throw err;
+  }
 })
 
 export const updateUser = createAsyncThunk("updateUser", async user => {
@@ -85,7 +90,7 @@ const userSlice = createSlice({
       sex: "",
       address: ""
     },
-    isLogged: false
+    isLogged: true
   },
   reducers: {
     logout(state) {
@@ -113,5 +118,5 @@ const userSlice = createSlice({
       })
   }
 })
-export const { logout, userLogin, setUser } = userSlice.actions
+export const { logout, userLogin } = userSlice.actions
 export default userSlice.reducer
