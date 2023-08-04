@@ -1,51 +1,56 @@
-.logAndSec{
+.logAndSec {
     padding: 16px 24px 0;
     color: #333;
 }
 
-.logAndSec-nav{
+.logAndSec-nav {
     margin: 16px 0;
     display: flex;
     gap: 8px;
 }
 
-.logAndSec-nav-item-link:hover{
+.logAndSec-nav-item-link:hover {
     text-decoration: underline;
 }
 
-.logAndSec-nav-btn-back{
+.logAndSec-nav-btn-back {
     margin-left: -7px;
 }
 
-.logAndSec-title{
+.logAndSec-title {
     padding: 16px 0;
 }
 
-.logAndSec-section{
+.logAndSec-section {
     padding: 16px 0;
     border-bottom: 1px solid #e0e0e0;
     position: relative;
 }
 
-.logAndSec-section-password{
+.logAndSec-account {
+    margin-bottom: 50px;
+}
+
+.logAndSec-section-password {
     position: relative;
 }
 
-.logAndSec-section-password-notice{
+.logAndSec-section-password-notice {
     padding-top: 16px;
     color: #717171;
 }
 
-.logAndSec-section-form{
+.logAndSec-section-form {
     display: flex;
     flex-direction: column;
 }
 
-.logAndSec-section-form-lbl{
+.logAndSec-section-form-lbl {
     padding: 8px 0;
 }
 
-.logAndSec-btn-verify,.logAndSec-btn-update {
+.logAndSec-btn-verify,
+.logAndSec-btn-update {
     width: 150px;
     font-weight: bold;
     font-size: 16px;
@@ -58,21 +63,22 @@
 
 }
 
-.logAndSec-section-title{
+.logAndSec-section-title {
     padding-bottom: 24px;
 }
 
-.logAndSec-section-social{
+.logAndSec-section-social {
     padding: 24px 0;
     position: relative;
 }
-.logAndSec-section-social-status{
+
+.logAndSec-section-social-status {
     display: inline-block;
     margin-top: 16px;
     color: #717171;
 }
 
-.logAndSec-section-btn{
+.logAndSec-section-btn {
     position: absolute;
     right: 0;
     top: 0;
@@ -84,16 +90,17 @@
     cursor: pointer;
 }
 
-.logAndSec-section-dissable{
+.logAndSec-section-dissable {
     display: flex;
     justify-content: space-between;
 }
 
-.logAndSec-section-dissable-txt{
+.logAndSec-section-dissable-txt {
     color: #717171;
 }
 
-.logAndSec-section-dissable-btn, .logAndSec-accountDissable-buttons-delete{
+.logAndSec-section-dissable-btn,
+.logAndSec-accountDissable-buttons-delete {
     background-color: transparent;
     border: none;
     color: #d93900;
@@ -101,7 +108,7 @@
     cursor: pointer;
 }
 
-.logAndSec-accountDissable{
+.logAndSec-accountDissable {
     position: fixed;
     top: 0;
     left: 0;
@@ -115,7 +122,7 @@
     background-color: #00000030;
 }
 
-.logAndSec-accountDissable-container{
+.logAndSec-accountDissable-container {
     background-color: #fffffff3;
     box-shadow: 0 0 6px #00000030;
     height: 200px;
@@ -128,20 +135,20 @@
     text-align: center;
 }
 
-.logAndSec-accountDissable-notice{
+.logAndSec-accountDissable-notice {
     font-size: 14px;
-    text-align:start;
+    text-align: start;
     color: #d93900;
 }
 
-.logAndSec-accountDissable-buttons{
+.logAndSec-accountDissable-buttons {
     display: flex;
     justify-content: space-between;
 }
 
-.logAndSec-accountDissable-buttons-cancel{
+.logAndSec-accountDissable-buttons-cancel {
     background-color: #008489;
-    border:none ;
+    border: none;
     color: #fff;
     padding: 8px;
     border-radius: 4px;
@@ -152,13 +159,13 @@
 
 
 @media (max-width : 750px) {
-    .logAndSec-title{
+    .logAndSec-title {
         padding: 24px 0;
         font-size: 22px;
         color: #000;
     }
 
-    .logAndSec-accountDissable-container{
+    .logAndSec-accountDissable-container {
         background-color: #fffffff3;
         box-shadow: 0 0 6px #00000030;
         height: 200px;

@@ -5,7 +5,8 @@ import { useDispatch } from "react-redux";
 import { AiOutlineLeft } from "react-icons/ai";
 import "./loginAndSecurity.css"
 import { hideModal, showModal } from "../../assets/appSlice";
-
+import { DeleteUser, logout, updateUser } from "../../assets/userSlice"
+import { hash } from "bcryptjs";
 export default function LoginAndSecurity({ windowWidth }) {
 
     const [loginVisib, setLoginVisib] = useState(false)
@@ -24,60 +25,64 @@ export default function LoginAndSecurity({ windowWidth }) {
     const dispatch = useDispatch()
 
     async function handleVerifyPassword() {
-        setNewPassVisib(true)
-        //     dispatch(updateUser({
-        //         name: " ",
-        //         email: "",
-        //         phone: "",
-        //         birthDate: "",
-        //         sex: "",
-        //         address: "",
-        //         oldPassword,
-        //         newPassword
-        //     })).then(e => {
-        //         console.log(e)
-        //         if (e.payload.response?.data.error == true) {
-        //             setErrorMsg(e.payload.response.data.msg)
-        //             setErrors({ ...errors, passwordError: true })
-        //             setTimeout(() => {
-        //                 setErrors({ ...errors, passwordError: false })
-        //                 setErrorMsg("")
-        //             }, 2000);
-        //         }
-        //         else {
-        //             setNewPassVisib(true)
-        //         }
-        //     })
+            dispatch(updateUser({
+                name: " ",
+                email: "",
+                phone: "",
+                birthDate: "",
+                sex: "",
+                address: "",
+                oldPassword,
+                newPassword
+            })).then(e => {
+                console.log(e)
+                if (e.payload.response?.data.error == true) {
+                    setErrorMsg(e.payload.response.data.msg)
+                    setErrors({ ...errors, passwordError: true })
+                    setTimeout(() => {
+                        setErrors({ ...errors, passwordError: false })
+                        setErrorMsg("")
+                    }, 2000);
+                }
+                else {
+                    setNewPassVisib(true)
+                }
+            })
     }
 
-    // async function handleUpdatePassoword() {
-    //     if (confirmNewPassword != newPassword) {
-    //         setErrors({ ...errors, newPasswordError: true })
-    //         setTimeout(() => {
-    //             setErrors({ ...errors, newPasswordError: false })
-    //         }, 2000);
-    //     }else{
-    //         const hashedPassword = await hash(newPassword,8)
-    //         dispatch(updateUser({
-    //             name: " ",
-    //             email: "",
-    //             phone: "",
-    //             birthDate: "",
-    //             sex: "",
-    //             address: "",
-    //             oldPassword,
-    //             newPassword:hashedPassword
-    //         })).then(e => console.log(e))
-    //     }
-    // }
+    async function handleUpdatePassoword() {
+        if (confirmNewPassword != newPassword) {
+            setErrors({ ...errors, newPasswordError: true })
+            setTimeout(() => {
+                setErrors({ ...errors, newPasswordError: false })
+            }, 2000);
+        } else {
+            const hashedPassword = await hash(newPassword, 8)
+            dispatch(updateUser({
+                name: " ",
+                email: "",
+                phone: "",
+                birthDate: "",
+                sex: "",
+                address: "",
+                oldPassword,
+                newPassword: hashedPassword
+            })).then(e => console.log(e))
+            setNewPassowrd("")
+            setConfirmNewPassowrd("")
+            setOldPassword("")
+            setNewPassVisib(false)
 
-    // function handleDeleteUser() {
-    //     const userId = localStorage.getItem("userId")
-    //     dispatch(DeleteUser(userId))
-    //     dispatch(logout())
-    //     navigate("/")
-    //     localStorage.clear()
-    // }
+        }
+    }
+
+    function handleDeleteUser() {
+        const userId = localStorage.getItem("userId")
+        dispatch(DeleteUser(userId))
+        dispatch(logout())
+        navigate("/")
+        localStorage.clear()
+    }
 
     function handleDissableAccount() {
         dispatch(showModal())
@@ -132,7 +137,7 @@ export default function LoginAndSecurity({ windowWidth }) {
                                         {errors.newPasswordError &&
                                             <p className="">As senhas não coincidem!</p>}
                                     </div>
-                                    <button type="button" className="logAndSec-btn-update">Atualizar senha</button>
+                                    <button type="button" className="logAndSec-btn-update" onClick={handleUpdatePassoword}>Atualizar senha</button>
                                 </form>
                             }
                         </div>
@@ -159,7 +164,7 @@ export default function LoginAndSecurity({ windowWidth }) {
                 <h2 className="logAndSec-section-title">Histórico de dispositivos</h2>
                 <p>Não temos acesso aos dispositivos acessados pelo usuario</p>
             </section>
-            <section className="logAndSec-section">
+            <section className="logAndSec-section logAndSec-account">
                 <h1 className="logAndSec-section-title">Conta</h1>
                 <div className="logAndSec-section-dissable">
                     <span className="logAndSec-section-dissable-txt">Desativar sua conta</span>
@@ -173,7 +178,7 @@ export default function LoginAndSecurity({ windowWidth }) {
                         <p className="logAndSec-accountDissable-notice">Ao clicar em excluir, todos os seus dados serão apagados permanentemente do nosso sistema, tem certeza de sua decisão ?</p>
                         <div className="logAndSec-accountDissable-buttons">
                             <button className="logAndSec-accountDissable-buttons-cancel" onClick={handleCancelDissableAccount}>Cancelar</button>
-                            <button className="logAndSec-accountDissable-buttons-delete">Excluir</button>
+                            <button onClick={handleDeleteUser} className="logAndSec-accountDissable-buttons-delete">Excluir</button>
                         </div>
                     </div>
                 </div>}

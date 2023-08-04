@@ -7,6 +7,7 @@ import { getUser, logout, setUserImage } from "../../assets/userSlice"
 import { serverUrl } from "../../assets/api"
 
 export default function Profile({ windowWidth }) {
+    
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const userAcomodations = [1, 2]
