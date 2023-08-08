@@ -79,22 +79,24 @@ export const updateUser = createAsyncThunk("updateUser", async user => {
   return res
 })
 
+const initialState = {
+  user: {
+    name: "",
+    email: "",
+    phone: "",
+    birthDate: "",
+    sex: "",
+    address: ""
+  },
+  isLogged: false
+}
+
 const userSlice = createSlice({
   name: "user",
-  initialState: {
-    user: {
-      name: "",
-      email: "",
-      phone: "",
-      birthDate: "",
-      sex: "",
-      address: ""
-    },
-    isLogged: true
-  },
+  initialState: initialState,
   reducers: {
     logout(state) {
-      return { ...state, isLogged: false }
+      return { ...state, isLogged: false, user: initialState.user }
     },
     userLogin(state) {
       return { ...state, isLogged: true }

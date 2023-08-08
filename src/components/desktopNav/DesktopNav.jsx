@@ -34,6 +34,8 @@ export default function DesktopNav() {
     function handleGetUserImage() {
         if (user.image) {
             setImage(`${serverUrl}profile/${user.image}`)
+        } else{
+            setImage("")
         }
     }
 

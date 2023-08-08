@@ -31,9 +31,9 @@ export default function Filter() {
                 }
             </div>
             <div className="hostTypes-buttons hostTypes-button--right">
-                <button className="hostTypes-buttons-button">
+                {/* <button className="hostTypes-buttons-button">
                     <AiOutlineRight size={16} />
-                </button>
+                </button> */}
                 <button className="hostTypes-buttons-filter" onClick={handleOpenFilter}>
                     <BsSliders size={20} />
                     <span>Filtros</span>

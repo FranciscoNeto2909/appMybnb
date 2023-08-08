@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux"
-import { hideModal, showLogin, showModal } from "../../assets/appSlice"
+import { hideMenu, hideModal, showLogin, showModal } from "../../assets/appSlice"
 import { logout } from "../../assets/userSlice"
 import { useNavigate } from "react-router-dom"
 
@@ -14,9 +14,11 @@ export default function Menu() {
     }
 
     function handleLogout() {
+        localStorage.clear()
         dispatch(logout())
         dispatch(hideModal())
-        localStorage.clear()
+        dispatch(hideMenu())
+        navigate("/")
     }
 
     return (
@@ -42,11 +44,11 @@ export default function Menu() {
                 <nav className="menu-items-container">
                     <ul className="menu-items border-line">
                         <li className="menu-item font-dark" onClick={handleLogin}>Entrar</li>
-                        <li className="menu-item">Cadastre-se</li>
+                        <li className="menu-item" onClick={handleLogin}>Cadastre-se</li>
                     </ul>
                     <ul className="menu-items">
-                        <li className="menu-item">Anuncie seu espaço</li>
-                        <li className="menu-item">Ofereça uma experiência </li>
+                        <li className="menu-item" onClick={handleLogin}>Anuncie seu espaço</li>
+                        <li className="menu-item" onClick={handleLogin}>Ofereça uma experiência </li>
                         <li className="menu-item">Ajuda</li>
                     </ul>
                 </nav>

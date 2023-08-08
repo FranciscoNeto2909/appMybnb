@@ -20,7 +20,6 @@ export default function EmailAuth({ code, setStep }) {
 
         } else {
             setStep(3)
-            console.log("Ok")
         }
     }
 

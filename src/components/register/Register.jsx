@@ -64,7 +64,6 @@ export default function Register() {
         } else if (emailRegex.test(loginData.email)) {
             const code = await handleGenerateAuthCode()
             setInLoading(true)
-            console.log(code)
             dispatch(emailAuth({
                 email: loginData.email,
                 code: code
