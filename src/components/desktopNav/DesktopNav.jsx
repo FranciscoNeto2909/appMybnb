@@ -13,13 +13,13 @@ import Menu from '../menu/MEnu';
 import { serverUrl } from '../../assets/api';
 
 export default function DesktopNav() {
-    const user = useSelector(data => data.user)
+    const user = useSelector(data => data.user.user)
     const { isMenuOpened } = useSelector(data => data.app)
     const [choisingDest, setChoisingDest] = useState(false)
     const [destOption, setDestOption] = useState('op1')
     const [acmdOption, setAcmdOption] = useState("where")
     const [image, setImage] = useState("")
-    const userImg = "https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png"
+
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
@@ -32,7 +32,9 @@ export default function DesktopNav() {
     }
 
     function handleGetUserImage() {
-        setImage(`${serverUrl}profile/${user.user.image}`)
+        if (user.image) {
+            setImage(`${serverUrl}profile/${user.image}`)
+        }
     }
 
     function handleSetDestinyOption(e) {
@@ -64,7 +66,7 @@ export default function DesktopNav() {
 
     useEffect(() => {
         handleGetUserImage()
-    }, [image])
+    }, [user])
 
     return (
         <div className={`desktopNav ${choisingDest && "choisingDest"}`}>
@@ -151,9 +153,11 @@ export default function DesktopNav() {
             </div>}
             <div className="menu">
                 <div className="menu-container" onClick={handleShowMenu}>
-                    <button className="menu-btn">
+                    <button type='button' className="menu-btn">
                         <AiOutlineMenu size={18} className="menu-lines" />
-                        <img src={image ? image : userImg} className="menu-userImg" alt="" />
+                        {image ?
+                            <img src={image} className="menu-userImg" alt="" /> :
+                            <AiOutlineUser size={28} className="menu-user-profile" />}
                     </button>
                 </div>
                 {isMenuOpened &&

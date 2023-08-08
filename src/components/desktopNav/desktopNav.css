@@ -12,7 +12,7 @@
     border-bottom: 1px solid #e0e0e0;
 }
 
-.desktopNav-logo{
+.desktopNav-logo {
     position: fixed;
     left: 24px;
     display: flex;
@@ -21,13 +21,13 @@
     cursor: pointer;
 }
 
-.desktopNav-logo-img{
+.desktopNav-logo-img {
     height: 75px;
     width: 80px;
     pointer-events: none;
 }
 
-.desktopNav-logo-title{
+.desktopNav-logo-title {
     color: #09129A;
     margin-bottom: 4px;
     margin-left: -8px;
@@ -344,10 +344,7 @@
 }
 
 .menu-user-profile {
-    border: none;
-    display: flex;
-    cursor: pointer;
-    align-items: baseline;
+    margin-left: 4px;
     border-radius: 50%;
     color: #444;
     background-color: #7b7b7b;
@@ -365,6 +362,7 @@
 
 .menu-btn {
     height: 30px;
+    width: 60px;
     color: #fff;
     display: flex;
     align-items: center;
@@ -397,8 +395,8 @@
     font-size: .9rem;
 }
 
-.menu-userImg{
-    height: 50px;
+.menu-userImg {
+    height: 45px;
 }
 
 .font-dark {
