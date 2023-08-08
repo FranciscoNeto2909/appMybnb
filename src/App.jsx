@@ -13,7 +13,7 @@ import PersonalInfos from "./components/personalInfos/PersonalInfos";
 import Profile from "./pages/profile/Profile";
 import LoginAndSecurity from "./components/loginAndSecurity/LoginAndSecurity";
 import { getAcomodations } from "./assets/housesSlice"
-import { getUser } from "./assets/userSlice"
+import { getUser, logout } from "./assets/userSlice"
 import Favorites from "./pages/favorites/Favorites";
 import FavoritesModal from "./components/favoritesModal/FavoritesModal";
 
@@ -40,6 +40,8 @@ export default function App() {
     navigate("/")
     if (token !== null && id !== null) {
       dispatch(getUser(id))
+    } else {
+      dispatch(logout())
     }
   }, []);
 

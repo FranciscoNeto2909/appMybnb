@@ -364,14 +364,16 @@
 
 
 .menu-btn {
+    height: 30px;
     color: #fff;
     display: flex;
     align-items: center;
-    gap: 0 10px;
+    gap: 0 6px;
     background-color: transparent;
     color: rgb(65, 65, 65);
     border: none;
     cursor: pointer;
+    overflow: hidden;
 }
 
 .menu-items-container {
@@ -393,6 +395,10 @@
     margin: 5px 0;
     font-weight: 400;
     font-size: .9rem;
+}
+
+.menu-userImg{
+    height: 50px;
 }
 
 .font-dark {

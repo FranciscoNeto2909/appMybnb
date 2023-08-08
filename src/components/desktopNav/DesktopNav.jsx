@@ -1,24 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AiOutlineMenu, AiOutlineUser, AiOutlineSearch } from "react-icons/ai"
 import "./desktopNav.css"
 import Who from "./who/Who"
 import When from "./when/When"
 import SearchDestiny from "./where/SearchDestiny"
 import HostTypesFilter from "../hostTypesFilter/HostTypesFilter"
-import { hideModal, showLogin, showMenu, showModal } from '../../assets/appSlice';
+import { hideMenu, hideModal, showMenu, showModal } from '../../assets/appSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import logo from "../../imgs/logo.png"
-import { logout } from '../../assets/userSlice';
+import Menu from '../menu/MEnu';
+import { serverUrl } from '../../assets/api';
 
 export default function DesktopNav() {
-    const navigate = useNavigate()
+    const user = useSelector(data => data.user)
     const { isMenuOpened } = useSelector(data => data.app)
-    const { isLogged } = useSelector(data => data.user)
     const [choisingDest, setChoisingDest] = useState(false)
     const [destOption, setDestOption] = useState('op1')
     const [acmdOption, setAcmdOption] = useState("where")
+    const [image, setImage] = useState("")
+    const userImg = "https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png"
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     function handleShowMenu() {
         if (isMenuOpened) {
@@ -28,15 +31,8 @@ export default function DesktopNav() {
         }
     }
 
-    function handleLogin() {
-        dispatch(showModal())
-        dispatch(showLogin())
-    }
-
-    function handleLogout() {
-        dispatch(logout())
-        dispatch(hideModal())
-        localStorage.clear()
+    function handleGetUserImage() {
+        setImage(`${serverUrl}profile/${user.user.image}`)
     }
 
     function handleSetDestinyOption(e) {
@@ -65,6 +61,10 @@ export default function DesktopNav() {
         dispatch(hideModal())
         setChoisingDest(false)
     }
+
+    useEffect(() => {
+        handleGetUserImage()
+    }, [image])
 
     return (
         <div className={`desktopNav ${choisingDest && "choisingDest"}`}>
@@ -153,42 +153,11 @@ export default function DesktopNav() {
                 <div className="menu-container" onClick={handleShowMenu}>
                     <button className="menu-btn">
                         <AiOutlineMenu size={18} className="menu-lines" />
-                        <AiOutlineUser size={28} className="menu-user-profile" />
+                        <img src={image ? image : userImg} className="menu-userImg" alt="" />
                     </button>
                 </div>
                 {isMenuOpened &&
-                    <>
-                        {isLogged ?
-                            <nav className="menu-items-container">
-                                <ul className="menu-items border-line font-dark">
-                                    <li className="menu-item">Mensagens</li>
-                                    <li className="menu-item">Viagens</li>
-                                    <li className="menu-item" onClick={() => navigate("/favorites")}>Favoritos</li>
-                                </ul>
-                                <ul className="menu-items border-line">
-                                    <li className="menu-item">Editar anuncio</li>
-                                    <li className="menu-item">Ofereça uma experiência</li>
-                                    <li className="menu-item">Indique um anfitrião</li>
-                                    <li className="menu-item" onClick={() => navigate("/account")}>Conta</li>
-                                </ul>
-                                <ul className="menu-items">
-                                    <li className="menu-item">Ajuda</li>
-                                    <li className="menu-item" onClick={handleLogout}>Sair da conta</li>
-                                </ul>
-                            </nav> :
-                            <nav className="menu-items-container">
-                                <ul className="menu-items border-line">
-                                    <li className="menu-item font-dark" onClick={handleLogin}>Entrar</li>
-                                    <li className="menu-item">Cadastre-se</li>
-                                </ul>
-                                <ul className="menu-items">
-                                    <li className="menu-item">Anuncie seu espaço</li>
-                                    <li className="menu-item">Ofereça uma experiência </li>
-                                    <li className="menu-item">Ajuda</li>
-                                </ul>
-                            </nav>
-                        }
-                    </>
+                    <Menu />
                 }
             </div>
         </div>
