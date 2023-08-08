@@ -34,13 +34,14 @@ export const emailAuth = createAsyncThunk("emailAuth", async email => {
 })
 
 export const getUser = createAsyncThunk("getUser", async userId => {
-  const res = api.get(`users/${userId}`)
-    .then(data => data.data)
-    .catch(err => {
-      localStorage.clear()
-      return err
-    })
-  return res
+  try {
+    const res = await api.get(`users/${userId}`)
+    const data = res.data
+    return data
+  } catch (err) {
+    localStorage.clear()
+    return err
+  }
 })
 
 export const DeleteUser = createAsyncThunk("deleteUser", async userId => {
@@ -116,7 +117,12 @@ const userSlice = createSlice({
         }
       })
       .addCase(getUser.fulfilled, (state, action) => {
-        return { ...state, user: action.payload, isLogged: true }
+        if (action.payload.message === "Network Error") {
+          localStorage.clear()
+          return { ...state }
+        } else {
+          return { ...state, user: action.payload, isLogged: true }
+        }
       })
   }
 })
