@@ -9,7 +9,7 @@ import { hideMenu, hideModal, showMenu, showModal } from '../../assets/appSlice'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import logo from "../../imgs/logo.png"
-import Menu from '../menu/MEnu';
+import Menu from '../menu/Menu';
 import { serverUrl } from '../../assets/api';
 
 export default function DesktopNav() {
