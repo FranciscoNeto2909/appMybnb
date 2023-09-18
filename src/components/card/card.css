@@ -28,7 +28,6 @@
 .card-img {
     height: 320px;
     width: 100%;
-    aspect-ratio: 1;
 }
 
 .card-data {

@@ -23,7 +23,7 @@ export default function Card({ house }) {
 
   return (
     <div className="card">
-      <button className='card-favorite-btn' type='button' onClick={handleOpenFavoritesForm}>
+      <button className='card-favorite-btn' id='fav-btn' aria-label='fav-btn' type='button' onClick={handleOpenFavoritesForm}>
         {favorite ?
           <AiFillHeart size={25} className="favorite" /> :
           <AiOutlineHeart size={25} />}

@@ -12,7 +12,6 @@ import { emailAuth } from "../../assets/userSlice"
 export default function Register() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const [inLoading, setInLoading] = useState(false)
     const [step, setStep] = useState(1)
     const [error, setError] = useState(false)
     const [loading, setLoading] = useState(false)
@@ -62,13 +61,13 @@ export default function Register() {
                 setLoginData({ ...loginData, email: "" })
             }, 2000);
         } else if (emailRegex.test(loginData.email)) {
+            setLoading(true)
             const code = await handleGenerateAuthCode()
-            setInLoading(true)
             dispatch(emailAuth({
                 email: loginData.email,
                 code: code
             })).then(() => {
-                setInLoading(false)
+                setLoading(false)
                 setStep(step + 1)
             })
         }
@@ -86,17 +85,17 @@ export default function Register() {
         const close = e.target.classList
         if (close.contains("close")) {
             dispatch(showNav())
-            navigate("/")
             dispatch(hideLogin())
             dispatch(hideModal())
+            navigate("/")
         }
     }
 
     function handlebtnClick() {
-        navigate("/")
         dispatch(showNav())
         dispatch(hideLogin())
         dispatch(hideModal())
+        navigate("/")
     }
 
     useEffect(() => {

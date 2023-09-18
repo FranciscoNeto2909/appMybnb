@@ -155,7 +155,7 @@ export default function DesktopNav() {
             </div>}
             <div className="menu">
                 <div className="menu-container" onClick={handleShowMenu}>
-                    <button type='button' className="menu-btn">
+                    <button type='button' aria-label='menu-btn' id='menu-btn' className="menu-btn">
                         <AiOutlineMenu size={18} className="menu-lines" />
                         {image ?
                             <img src={image} className="menu-userImg" alt="" /> :
