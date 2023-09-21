@@ -37,6 +37,10 @@ export default function App() {
   }
 
   useEffect(() => {
+    dispatch(getAcomodations())
+  }, [])
+
+  useEffect(() => {
     navigate("/")
     if (token !== null && id !== null) {
       dispatch(getUser(id))
@@ -51,12 +55,9 @@ export default function App() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  useEffect(() => {
-    dispatch(getAcomodations())
-  }, [])
 
   return (
-    <div className={`App ${isModalOpened && "hideScroll"}`} onClick={windowWidth >= 750 ? handleToggleMenu : () => {}}>
+    <div className={`App ${isModalOpened && "hideScroll"}`} onClick={windowWidth >= 750 ? handleToggleMenu : () => { }}>
 
       {windowWidth <= 750 &&
         <MobileNav />
